@@ -17,9 +17,14 @@ If you need access to any of the others, please contact me for reprints.
 
    <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
 
+2021
+====
+
+
 2020
 ====
 
+.. include:: ./pub_list/bjelle2020_adding.rst
 .. include:: ./pub_list/wood2020_beyond.rst
 .. include:: ./pub_list/vita2020_happier.rst
 .. include:: ./pub_list/janach2020_ifn.rst
