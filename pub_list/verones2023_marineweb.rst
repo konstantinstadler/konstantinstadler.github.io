@@ -1,5 +1,5 @@
 * **MarINvaders: A Web Toolkit of Marine Species for Use in Environmental Assessments. 2023**.
-    Verones F., Gjedde P., Koslowski M., Woods J. S., Lonka R., Stadler K. *Ecosphere* 14, no. 11 (November 2023).
+    Verones F., Gjedde P., Koslowski M., Woods J. S., Lonka R., Stadler K. *Ecosphere* 14, no. 11.
 
   :DOI: `10.1002/ecs2.4697 <https://doi.org/10.1002/ecs2.4697>`_
 

@@ -1,5 +1,5 @@
 * **An Open-Access Web Application to Visualise Countries’ and Regions’ Carbon Footprints Using Sankey Diagrams. 2024**.
-    Andrieu B., Le Boulzec H., Delannoy L., Verzier F., Winter G., Vidal O., Stadler K. *Communications Earth & Environment* 5, no. 1 (May 7, 2024).
+    Andrieu B., Le Boulzec H., Delannoy L., Verzier F., Winter G., Vidal O., Stadler K. *Communications Earth & Environment* 5, no. 1.
 
   :DOI: `10.1038/s43247-024-01378-8 <https://doi.org/10.1038/s43247-024-01378-8>`_
 

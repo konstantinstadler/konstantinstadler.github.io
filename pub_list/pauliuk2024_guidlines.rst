@@ -1,5 +1,5 @@
 * **Guidelines and Good Practice Examples for Complete Traceability of Workflows and Reproducibility of Results in Industrial Ecology Research. 2024**.
-    Pauliuk S., Helbig C., Lupton R., Pichler P. P., Schulte S., Stadler K., Wang P., and Wiedenhofer D. *Albert-Ludwigs-Universität Freiburg*, 2024.
+    Pauliuk S., Helbig C., Lupton R., Pichler P. P., Schulte S., Stadler K., Wang P., and Wiedenhofer D. *Albert-Ludwigs-Universität Freiburg*.
 
   :DOI: `10.6094/UNIFR/255618 <https://doi.org/10.6094/UNIFR/255618>`_
 
