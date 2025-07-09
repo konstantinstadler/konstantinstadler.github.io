@@ -2,6 +2,7 @@
     Lonka, R., F. Verones, and K. Stadler. *Journal of Open Source Software* 6, no. 64: 3575.
 
   :DOI: `10.21105/joss.03575 <https://doi.org/10.21105/joss.03575>`_
+  :Code: `Gitlab Marinvaders <https://gitlab.com/marinvaders/marinvaders>`_
 
   .. raw:: html
 

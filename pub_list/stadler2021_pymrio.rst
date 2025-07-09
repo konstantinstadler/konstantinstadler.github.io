@@ -2,6 +2,8 @@
     Stadler, K. *Journal of Open Research Software* 9, no. 1: 8.
 
   :DOI: `10.5334/jors.251 <https://doi.org/10.5334/jors.251>`_
+  :Source Code: `IndEcol/pymrio <https://github.com/IndEcol/pymrio>`_
+  :Code Archive: `10.5281/zenodo.1146054 <https://doi.org/10.5281/zenodo.1146054>`_
 
   .. raw:: html
 

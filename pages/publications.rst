@@ -17,12 +17,28 @@ If you need access to any of the others, please contact me for reprints.
 
    <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
 
+
+2024
+====
+
+.. include:: ./pub_list/pauliuk2024_guidlines.rst
+.. include:: ./pub_list/arvesen2024_bioenergy.rst
+.. include:: ./pub_list/andrieu2024_carbonsankey.rst
+.. include:: ./pub_list/berthet2024_towards.rst
+.. include:: ./pub_list/hoiberg2024_plastic.rst
+
+2023
+====
+
+.. include:: ./pub_list/verones2023_marineweb.rst
+.. include:: ./pub_list/leclerc2023_toward.rst
+.. include:: ./pub_list/velez2023_shared.rst
+
 2021
 ====
 
 .. include:: ./pub_list/stadler2021_pymrio.rst
 .. include:: ./pub_list/lonka2021_marinvaders.rst
-
 
 2020
 ====

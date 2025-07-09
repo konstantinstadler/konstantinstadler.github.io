@@ -3,6 +3,7 @@
     Bjelle, E.L., J. Többen, K. Stadler, T. Kastner, M.C. Theurl, K.-H. Erb, K.-S. Olsen, K.S. Wiebe, and R. Wood.  *Journal of Economic Structures*
 
   :DOI: `10.1186/s40008-020-0182-y <https://doi.org/10.1186/s40008-020-0182-y>`_
+  :Data: `10.5281/zenodo.2654460 <https://doi.org/10.5281/zenodo.2654460>`_
 
   .. raw:: html
 
