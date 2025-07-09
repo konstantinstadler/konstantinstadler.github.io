@@ -1,6 +1,7 @@
 .. title: Pymrio
 .. slug: pymrio
 .. date: 1970-01-01T00:00:00+00:00
+.. logo: /images/pymrio_logo_small.png
 .. duration: ongoing
 .. description: Multi-Regional Input-Output Analysis in Python. 
 .. devstatus: production
@@ -23,12 +24,10 @@
 
 Pymrio: Multi-Regional Input-Output Analysis in Python.
 
-.. image:: https://badge.fury.io/py/pymrio.svg
-    :target: https://badge.fury.io/py/pymrio
-.. image:: https://anaconda.org/konstantinstadler/pymrio/badges/version.svg   
-     :target: https://anaconda.org/konstantinstadler/pymrio
-.. image:: https://coveralls.io/repos/github/konstantinstadler/pymrio/badge.svg?branch=master
-    :target: https://coveralls.io/github/konstantinstadler/pymrio
+.. image:: https://img.shields.io/pypi/v/pymrio.svg
+    :target: https://pypi.python.org/pypi/pymrio/
+.. image:: https://anaconda.org/conda-forge/pymrio/badges/version.svg   
+    :target: https://anaconda.org/conda-forge/pymrio
 .. image:: https://readthedocs.org/projects/pymrio/badge/?version=latest
     :target: http://pymrio.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
