@@ -1,11 +1,11 @@
 .. title: SisAl Pilot
 .. slug: sisal
 .. date: 1970-01-01T00:00:00+00:00
-.. duration: ongoing
+.. duration: May 2020 - Oct 2024
 .. previewimage: /images/sisal_banner.jpg
 .. funding: EU H2020 - Grant Nr 869268
 .. description: Innovative pilot for Silicon production with low environmental impact using secondary Aluminium and silicon raw materials
-.. devstatus: ongoing
+.. devstatus: finished
 .. link: https://www.sisal-pilot.eu/
 .. role: Data Manager
 .. status: featured

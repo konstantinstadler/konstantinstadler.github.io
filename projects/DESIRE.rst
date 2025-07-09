@@ -23,13 +23,13 @@ Within this project, we compiled version 3 of EXIOBASE_.
 .. _`EXIOBASE`: https://www.exiobase.eu
 
 Presentations
--------------
+--------------
 
 .. include:: ./pres_list/iioa2016.rst
 .. include:: ./pres_list/iioa2016.rst
 
 Publications
-------------
+-------------
 
 .. include:: ./pub_list/marques2019_nee.rst
 .. include:: ./pub_list/stadler2018_exiobase3.rst
