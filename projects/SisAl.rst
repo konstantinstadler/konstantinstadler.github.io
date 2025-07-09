@@ -15,7 +15,7 @@
    .. raw:: html
 
     <script type='text/javascript' 
-    src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></scri pt>
+    src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
 
 The project aims to demonstrate a patented novel industrial process to produce silicon (Si, a critical raw material), enabling a shift from today’s carbothermic Submerged Arc Furnace (SAF) process to a far more environmentally and economically sustainable alternative: an aluminothermic reduction of quartz in slag that utilizes secondary raw materials such as aluminium (Al) EoL scrap and dross, as replacements for carbon reductants used today.
 

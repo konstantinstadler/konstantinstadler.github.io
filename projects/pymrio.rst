@@ -18,7 +18,7 @@
    .. raw:: html
 
     <script type='text/javascript' 
-    src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></scri pt>
+    src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
 
 
 Pymrio: Multi-Regional Input-Output Analysis in Python.

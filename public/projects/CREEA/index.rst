@@ -13,7 +13,7 @@
    .. raw:: html
 
     <script type='text/javascript' 
-    src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></scri pt>
+    src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
 
        
 The main goal of CREEA was to refine and elaborate economic and environmental accounting principles as discussed in the London Group and consolidated in the future SEEA 2012, to test them in practical data gathering, to troubleshoot and refine approaches, and show added value of having such harmonized data available via case studies.
