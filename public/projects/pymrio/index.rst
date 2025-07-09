@@ -4,6 +4,7 @@
 .. duration: ongoing
 .. description: Multi-Regional Input-Output Analysis in Python. 
 .. devstatus: production
+.. previewimage: /images/pymrio_logo.png
 .. link: https://pymrio.readthedocs.io/en/latest/?badge=latest
 .. github: https://github.com/IndEcol/pymrio
 .. bugtracker: https://github.com/IndEcol/pymrio/issues
@@ -19,8 +20,6 @@
     <script type='text/javascript' 
     src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></scri pt>
 
-.. image:: /images/pymrio_logo.png
-
 
 Pymrio: Multi-Regional Input-Output Analysis in Python.
 
@@ -28,8 +27,6 @@ Pymrio: Multi-Regional Input-Output Analysis in Python.
     :target: https://badge.fury.io/py/pymrio
 .. image:: https://anaconda.org/konstantinstadler/pymrio/badges/version.svg   
      :target: https://anaconda.org/konstantinstadler/pymrio
-.. image:: https://travis-ci.org/konstantinstadler/pymrio.svg?branch=master
-    :target: https://travis-ci.org/konstantinstadler/pymrio
 .. image:: https://coveralls.io/repos/github/konstantinstadler/pymrio/badge.svg?branch=master
     :target: https://coveralls.io/github/konstantinstadler/pymrio
 .. image:: https://readthedocs.org/projects/pymrio/badge/?version=latest
