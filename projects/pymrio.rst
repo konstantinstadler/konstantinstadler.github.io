@@ -3,13 +3,14 @@
 .. date: 1970-01-01T00:00:00+00:00
 .. duration: ongoing
 .. description: Multi-Regional Input-Output Analysis in Python. 
-.. devstatus: beta
+.. devstatus: production
 .. link: https://pymrio.readthedocs.io/en/latest/?badge=latest
-.. github: https://github.com/konstantinstadler/pymrio
-.. bugtracker: https://github.com/konstantinstadler/pymrio/issues
+.. github: https://github.com/IndEcol/pymrio
+.. bugtracker: https://github.com/IndEcol/pymrio/issues
 .. download: https://pypi.org/project/pymrio/
 .. lead: True
 .. role: Maintainer
+.. status: featured
 .. sort: 11
 
 
@@ -18,6 +19,7 @@
     <script type='text/javascript' 
     src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></scri pt>
 
+.. image:: /images/pymrio_logo.png
 
 
 Pymrio: Multi-Regional Input-Output Analysis in Python.
@@ -54,6 +56,11 @@ Further functions include:
 .. _WIOD: http://www.wiod.org/home
 .. _OECD: https://www.oecd.org/sti/ind/inter-country-input-output-tables.htm
 .. _EORA26: http://www.worldmrio.com/simplified/
+
+Publications
+-------------
+
+.. include:: ./pub_list/stadler2021_pymrio.rst
 
 Presentations
 -------------
