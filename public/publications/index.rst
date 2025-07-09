@@ -20,6 +20,9 @@ If you need access to any of the others, please contact me for reprints.
 2021
 ====
 
+.. include:: ./pub_list/stadler2021_pymrio.rst
+.. include:: ./pub_list/lonka2021_marinvaders.rst
+
 
 2020
 ====
