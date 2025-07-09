@@ -1,8 +1,0 @@
-
-* EXIOBASE 3 - Compilation and analysis of an EE MRIO time-series in current and constant prices
-
-  :Conference: 24. International Input-Output Conference
-  :Date: 4-8 July 2016
-  :Location: Korea, Seoul
-  :Slides: `10.5281/zenodo.1040821 <https://zenodo.org/record/1040821#.Wfsz3atrxO8>`_
-

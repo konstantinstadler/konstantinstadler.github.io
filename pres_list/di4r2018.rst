@@ -1,8 +1,0 @@
-
-* The Industrial Ecology Open Science Project
-
-  :Conference: Digital Infrastructures for Research (DI4R)
-  :Date: 9-11 October 2018 
-  :Location: Lisbon, Portugal
-  :Poster: `10.5281/zenodo.1455750 <https://doi.org/10.5281/zenodo.1455750>`_
-
