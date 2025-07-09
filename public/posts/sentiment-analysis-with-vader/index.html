@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sentiment Analysis with VADER | Konstantin Stadler</title>
+<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://konstantinstadler.site/posts/sentiment-analysis-with-vader/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Konstantin Stadler">
+<link rel="prev" href="../live-streaming-tweet-for-hashtags/" title="Live streaming tweet for hashtags" type="text/html">
+<link rel="next" href="../pymrio-tutorial-for-wiod/" title="Pymrio Tutorial for WIOD" type="text/html">
+<meta property="og:site_name" content="Konstantin Stadler">
+<meta property="og:title" content="Sentiment Analysis with VADER">
+<meta property="og:url" content="https://konstantinstadler.site/posts/sentiment-analysis-with-vader/">
+<meta property="og:description" content="Sentiment Analysis with VADER¶
+
+
+
+
+
+
+Sentiment analysis estimates whether whether a piece of text is negative, neutral or positive.
+There are two approaches towards sentiment analysis: binary or polar">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-11-27T11:11:18+01:00">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div id="wrapper">
+   <div class="overlay" style="max-width:300px"></div>
+
+   <!-- Sidebar -->
+   <nav class="navbar navbar-inverse fixed-top" style="background: #073642" , id="sidebar-wrapper" role="navigation"><ul class="nav sidebar-nav">
+<div class="sidebar-header">
+               <div class="sidebar-brand">
+                  <a href="../../">
+                  <img src="../../images/20201030_122424.jpg" style="max-width: 65%" alt="Konstantin"></a>
+                   <h4>
+                      <a href="../../about/">Konstantin Stadler</a>
+                  </h4>
+                   <p> Research Software Engineer <br>
+                   Scientist </p>
+                   <p>Follow me:  
+                   <a href="https://www.twitter.com/kst_stadler/">
+                   <i class="fa fa-twitter" aria-hidden="true"></i>
+                   |
+                   </a>
+                   <a href="https://github.com/konstantinstadler/">
+                   <i class="fa fa-github" aria-hidden="true"></i>
+                   |
+                   </a>
+                   <a href="https://gitlab.com/konstantinstadler/">
+                   <i class="fa fa-gitlab" aria-hidden="true"></i>
+                   |
+                   </a>
+                   <a href="https://no.linkedin.com/in/konstantinstadler/">
+                   <i class="fa fa-linkedin" aria-hidden="true"></i>
+                   </a>
+
+               </p>
+</div>
+           </div>
+
+           <ul class="navbar-nav mr-auto">
+                
+               <br>
+                
+               
+                <li class="nav-item">
+<a href="../../" class="nav-link">Home</a>
+                </li>
+<li class="nav-item">
+<a href="../../publications" class="nav-link">Publications</a>
+                </li>
+<li class="nav-item">
+<a href="../../projects" class="nav-link">Projects</a>
+                </li>
+<li class="nav-item">
+<a href="../../presentations" class="nav-link">Presentations</a>
+                </li>
+<li class="nav-item">
+<a href="../../blog" class="nav-link">Blog</a>
+                </li>
+<li class="nav-item">
+<a href="../../about" class="nav-link">About Me</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS feed</a>
+
+               
+           </li>
+</ul>
+<span class="navbar-text">
+             <i class="fa fa-copyright" aria-hidden="true"></i>  
+             Konstantin Stadler. Licenced under
+             <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+         </span>
+
+       </ul></nav><!-- /#sidebar-wrapper --><!-- End of Sidebar --><!-- Page Content --><div id="page-content-wrapper">
+    <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+</button>
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Sentiment Analysis with VADER</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Konstantin Stadler
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-11-27T11:11:18+01:00" itemprop="datePublished" title="2019-11-27 11:11">2019-11-27 11:11</time></a>
+            </p>
+            
+        <p class="sourceline"><a href="index.ipynb" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sentiment-Analysis-with-VADER">Sentiment Analysis with VADER<a class="anchor-link" href="#Sentiment-Analysis-with-VADER">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sentiment analysis estimates whether whether a piece of text is negative, neutral or positive.
+There are two approaches towards sentiment analysis: binary or polarity based or intensity/valence based.
+The polarity based only provides information if a certain text is postive or negative.
+For example, 'good' and 'perfect' would score the same.
+In contrast, a valence based sentiment analysis also takes the intensity of a word into account, therefore giving a higher value to 'perfect' in the example above.</p>
+<p>One of the major applications of sentiment analysis is judge social media streams (Twitter, facebook posts).
+For example, companies use it to identify negative feedbacks on social media and react/answer to them.</p>
+<!-- TEASER_END -->
+<p>Python provides the excellent <a href="http://www.nltk.org/">Natural Language Toolkit (NLTK)</a> for automatic text processing.Among others, NLTK includes the sentiment analysis package <a href="https://github.com/cjhutto/vaderSentiment">VADER (Valence Aware Dictionary and sEntiment Reasoner)</a>.</p>
+<p>VADER used a valence based approach for the sentiment analysing, building upon a lexicon of sentiment-related words.
+When VADER analysis a text, it check for the word in its lexicon, adding their negative or positive sentiments.
+The final (compound) score is the standardized sum of the ratings.</p>
+<p>You can find out more about VADER in the article <a href="http://comp.social.gatech.edu/papers/icwsm14.vader.hutto.pdf">Hutto, C.J. &amp; Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text. Eighth International Conference on Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To start with VADER, install NLTK (you might need sudo rights to do this).</p>
+<pre><code>pip install -U nltk
+</code></pre>
+<p>For further information see <a href="http://www.nltk.org/install.html">http://www.nltk.org/install.html</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The first time you use ntlk and VADER, you need to download the VADER lexicon. To do so (dont do that if you run it on the IE Server):</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># import nltk</span>
+<span class="c1"># nltk.download()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Either you now download "all" packages, or just choose the "vader_lexicon" in the category "Models".
+You only need to download the packages the first time you use them.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Having setup everything your are good to go:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.sentiment.vader</span><span class="w"> </span><span class="kn">import</span> <span class="n">SentimentIntensityAnalyzer</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And you can start analysing the first sentence:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">"This was easy"</span>
+<span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span><span class="o">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[3]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>{'compound': 0.4404, 'neg': 0.0, 'neu': 0.408, 'pos': 0.592}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The most important part of the output dictonary is the 'compound' part, which gives you the overall rating.
+Positive values indiacte an overall positive rating, negative values the opposite. The 'compound' value can range from -1 to +1.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To automatically process a bunch of text, run VADER in a loop (tricky sentences from the <a href="http://www.nltk.org/howto/sentiment.html">nltk - VADER docs</a>:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">tricky_sentences</span> <span class="o">=</span> <span class="p">[</span>
+   <span class="s2">"Most automated sentiment analysis tools are shit."</span><span class="p">,</span>
+   <span class="s2">"VADER sentiment analysis is the shit."</span><span class="p">,</span>
+   <span class="s2">"Sentiment analysis has never been good."</span><span class="p">,</span>
+   <span class="s2">"Sentiment analysis with VADER has never been this good."</span><span class="p">,</span>
+   <span class="s2">"Warren Beatty has never been so entertaining."</span><span class="p">,</span>
+   <span class="s2">"I won't say that the movie is astounding and I wouldn't claim that the movie is too banal either."</span><span class="p">,</span>
+   <span class="s2">"I like to hate Michael Bay films, but I couldn't fault this one"</span><span class="p">,</span>
+   <span class="s2">"It's one thing to watch an Uwe Boll film, but another thing entirely to pay for it"</span><span class="p">,</span>
+   <span class="s2">"The movie was too good"</span><span class="p">,</span>
+   <span class="s2">"This movie was actually neither that funny, nor super witty."</span><span class="p">,</span>
+   <span class="s2">"This movie doesn't care about cleverness, wit or any other kind of intelligent humor."</span><span class="p">,</span>
+   <span class="s2">"Those who find ugly meanings in beautiful things are corrupt without being charming."</span><span class="p">,</span>
+   <span class="s2">"There are slow and repetitive parts, BUT it has just enough spice to keep it interesting."</span><span class="p">,</span>
+   <span class="s2">"The script is not fantastic, but the acting is decent and the cinematography is EXCELLENT!"</span><span class="p">,</span>
+   <span class="s2">"Roger Dodger is one of the most compelling variations on this theme."</span><span class="p">,</span>
+   <span class="s2">"Roger Dodger is one of the least compelling variations on this theme."</span><span class="p">,</span>
+   <span class="s2">"Roger Dodger is at least compelling as a variation on the theme."</span><span class="p">,</span>
+   <span class="s2">"they fall in love with the product"</span><span class="p">,</span>
+   <span class="s2">"but then it breaks"</span><span class="p">,</span>
+   <span class="s2">"usually around the time the 90 day warranty expires"</span><span class="p">,</span>
+   <span class="s2">"the twin towers collapsed today"</span><span class="p">,</span>
+   <span class="s2">"However, Mr. Carter solemnly argues, his client carried out the kidnapping </span><span class="se">\</span>
+<span class="s2">   under orders and in the ''least offensive way possible.''"</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">tricky_sentences</span><span class="p">:</span>
+    <span class="n">sentiment</span> <span class="o">=</span> <span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span><span class="o">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">sentence</span><span class="p">)[</span><span class="s1">'compound'</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> - score: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">sentiment</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Most automated sentiment analysis tools are shit. - score: -0.5574
+VADER sentiment analysis is the shit. - score: 0.6124
+Sentiment analysis has never been good. - score: -0.3412
+Sentiment analysis with VADER has never been this good. - score: 0.5228
+Warren Beatty has never been so entertaining. - score: 0.5777
+I won't say that the movie is astounding and I wouldn't claim that the movie is too banal either. - score: 0.4215
+I like to hate Michael Bay films, but I couldn't fault this one - score: 0.3153
+It's one thing to watch an Uwe Boll film, but another thing entirely to pay for it - score: -0.2541
+The movie was too good - score: 0.4404
+This movie was actually neither that funny, nor super witty. - score: -0.6759
+This movie doesn't care about cleverness, wit or any other kind of intelligent humor. - score: -0.1338
+Those who find ugly meanings in beautiful things are corrupt without being charming. - score: -0.3553
+There are slow and repetitive parts, BUT it has just enough spice to keep it interesting. - score: 0.4678
+The script is not fantastic, but the acting is decent and the cinematography is EXCELLENT! - score: 0.7565
+Roger Dodger is one of the most compelling variations on this theme. - score: 0.2944
+Roger Dodger is one of the least compelling variations on this theme. - score: -0.1695
+Roger Dodger is at least compelling as a variation on the theme. - score: 0.2263
+they fall in love with the product - score: 0.6369
+but then it breaks - score: 0.0
+usually around the time the 90 day warranty expires - score: 0.0
+the twin towers collapsed today - score: -0.2732
+However, Mr. Carter solemnly argues, his client carried out the kidnapping    under orders and in the ''least offensive way possible.'' - score: -0.5859
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span><span class="o">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="s2">"Have fun"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>{'compound': 0.5106, 'neg': 0.0, 'neu': 0.233, 'pos': 0.767}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="previous">
+                <a href="../live-streaming-tweet-for-hashtags/" rel="prev" title="Live streaming tweet for hashtags">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../pymrio-tutorial-for-wiod/" rel="next" title="Pymrio Tutorial for WIOD">Next post</a>
+            </li>
+        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer"><a href="../../">Home</a>
+            
+            
+            
+        </footer>
+</div>
+</div>
+</div>
+<!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+
+            <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><script src="../../assets/js/sidebar.js"></script>'
+</body>
+</html>

@@ -1,0 +1,4 @@
+Sitemap: https://konstantinstadler.site/sitemapindex.xml
+
+User-Agent: *
+Host: konstantinstadler.site

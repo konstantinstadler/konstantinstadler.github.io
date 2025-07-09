@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Konstantin Stadler</title><link>https://konstantinstadler.site/</link><description>Plenty of lists and some code</description><atom:link href="https://konstantinstadler.site/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2025 Konstantin Stadler 
+&lt;a rel="license" href="https://creativecommons.org/licenses/by/4.0/"&gt;
+&lt;img alt="Creative Commons License BY-NC-SA"
+style="border-width:0; margin-bottom:12px;"
+src="https://i.creativecommons.org/l/by/4.0/88x31.png"&gt;&lt;/a&gt;</copyright><lastBuildDate>Wed, 09 Jul 2025 09:37:49 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Country Converter update 0.7.3</title><link>https://konstantinstadler.site/posts/country_converter_073/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;p&gt;Two points learned from compiling a new release of the &lt;a class="reference external" href="https://github.com/konstantinstadler/country_converter"&gt;country converter coco&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/country_converter_073/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>python</category><guid>https://konstantinstadler.site/posts/country_converter_073/</guid><pubDate>Fri, 09 Apr 2021 12:12:00 GMT</pubDate></item><item><title>EXIOBASE update: v3.8</title><link>https://konstantinstadler.site/posts/exiobase-update-v38/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;p&gt;We just released a new update for the EXIOBASE 3 MRIO time-series of monetary
+tables: v3.8.&lt;/p&gt;
+&lt;p&gt;It is a full re-estimate of the time-series, but still relies heavily on "now-casting" economic structure (and environmental extensions).&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/exiobase-update-v38/"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>EXIOBASE</category><guid>https://konstantinstadler.site/posts/exiobase-update-v38/</guid><pubDate>Fri, 20 Nov 2020 09:52:50 GMT</pubDate></item><item><title>Country Converter update 0.7.1</title><link>https://konstantinstadler.site/posts/country_converter_2020/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;p&gt;A new major release for the &lt;a class="reference external" href="https://github.com/konstantinstadler/country_converter"&gt;country converter coco&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/country_converter_2020/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>python</category><guid>https://konstantinstadler.site/posts/country_converter_2020/</guid><pubDate>Sat, 17 Oct 2020 09:12:00 GMT</pubDate></item><item><title>Plotting google trends (search terms) in Python</title><link>https://konstantinstadler.site/posts/plotting-google-trends-search-terms-in-python/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Plotting-google-trends-in-python"&gt;Plotting google trends in python&lt;a class="anchor-link" href="https://konstantinstadler.site/posts/plotting-google-trends-search-terms-in-python/#Plotting-google-trends-in-python"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;a href="https://trends.google.com/trends/"&gt;Google Trends&lt;/a&gt; show you the search-term frequency of a specific term relative to the total search-volume.&lt;/p&gt;
+&lt;p&gt;As by now, their is &lt;a href="https://en.wikipedia.org/wiki/Google_Trends#Google_Trends_API"&gt;no official API interface to Google trends&lt;/a&gt;. Their are, however, some unofficial packages to access the Google Trends. One of them is &lt;a href="https://github.com/GeneralMills/pytrends"&gt;pytrends&lt;/a&gt; which we will use here to get the relaitve search-term frequency.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/plotting-google-trends-search-terms-in-python/"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://konstantinstadler.site/posts/plotting-google-trends-search-terms-in-python/</guid><pubDate>Thu, 13 Aug 2020 15:57:18 GMT</pubDate></item><item><title>Automatic generation of google ngram graphs in Python</title><link>https://konstantinstadler.site/posts/google_ngram_in_python/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Automatic-generation-of-google-ngram-graphs-in-Python"&gt;Automatic generation of google ngram graphs in Python&lt;a class="anchor-link" href="https://konstantinstadler.site/posts/google_ngram_in_python/#Automatic-generation-of-google-ngram-graphs-in-Python"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;The &lt;a href="https://en.wikipedia.org/wiki/Google_Ngram_Viewer"&gt;Google Ngram Viewer&lt;/a&gt; allows you to plot the usage trajectories of words over time.&lt;/p&gt;
+&lt;p&gt;It has a &lt;a href="https://books.google.com/ngrams"&gt;convient web-interface&lt;/a&gt;, but for frequent usage you might want to generate word usage plots in python.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/google_ngram_in_python/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>google</category><category>ngram</category><category>pandas</category><category>python</category><guid>https://konstantinstadler.site/posts/google_ngram_in_python/</guid><pubDate>Tue, 04 Feb 2020 10:27:24 GMT</pubDate></item><item><title>Pymrio Tutorial for WIOD</title><link>https://konstantinstadler.site/posts/pymrio-tutorial-for-wiod/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;This tutorial follows the example given in the Pymrio article (Stadler et al 2018 sub). &lt;/p&gt;&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/pymrio-tutorial-for-wiod/"&gt;Read more…&lt;/a&gt; (28 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://konstantinstadler.site/posts/pymrio-tutorial-for-wiod/</guid><pubDate>Mon, 20 Jan 2020 18:18:16 GMT</pubDate></item><item><title>Sentiment Analysis with VADER</title><link>https://konstantinstadler.site/posts/sentiment-analysis-with-vader/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Sentiment-Analysis-with-VADER"&gt;Sentiment Analysis with VADER&lt;a class="anchor-link" href="https://konstantinstadler.site/posts/sentiment-analysis-with-vader/#Sentiment-Analysis-with-VADER"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Sentiment analysis estimates whether whether a piece of text is negative, neutral or positive.
+There are two approaches towards sentiment analysis: binary or polarity based or intensity/valence based.
+The polarity based only provides information if a certain text is postive or negative.
+For example, 'good' and 'perfect' would score the same.
+In contrast, a valence based sentiment analysis also takes the intensity of a word into account, therefore giving a higher value to 'perfect' in the example above.&lt;/p&gt;
+&lt;p&gt;One of the major applications of sentiment analysis is judge social media streams (Twitter, facebook posts).
+For example, companies use it to identify negative feedbacks on social media and react/answer to them.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/sentiment-analysis-with-vader/"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://konstantinstadler.site/posts/sentiment-analysis-with-vader/</guid><pubDate>Wed, 27 Nov 2019 10:11:18 GMT</pubDate></item><item><title>Live streaming tweet for hashtags</title><link>https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Streaming-of-tweets-for-hashtags-and-keywords"&gt;Streaming of tweets for hashtags and keywords&lt;a class="anchor-link" href="https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/#Streaming-of-tweets-for-hashtags-and-keywords"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;This notebook explains how to search the live twitter stream for certain hashtags and keywords.
+The gathered tweets are stored as text files and further processed into a panda DataFrame.&lt;/p&gt;
+&lt;p&gt;The script is designed for long term streaming with gathered tweets stored in succeeding files.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/"&gt;Read more…&lt;/a&gt; (8 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>pandas</category><category>python</category><category>streaming</category><category>twitter</category><guid>https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/</guid><pubDate>Fri, 22 Nov 2019 12:59:02 GMT</pubDate></item><item><title>Setting up a website with Nikola</title><link>https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;p&gt;Traditionally, the initial blog post on a custom made site desribes how to setup and build the site.
+However, there are already a plethora of such descriptions available.
+Therefore, I here rather share my motivation for the &lt;a class="reference internal" href="https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/#why"&gt;why&lt;/a&gt;, the outcome of my research about the &lt;a class="reference internal" href="https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/#how"&gt;how&lt;/a&gt;, followed by some points about &lt;a class="reference internal" href="https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/#practicalities"&gt;practicalities&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/</guid><pubDate>Fri, 25 Oct 2019 07:07:00 GMT</pubDate></item></channel></rss>

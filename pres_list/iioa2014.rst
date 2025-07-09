@@ -1,0 +1,9 @@
+
+* Exploring Resource Efficiency through Individual Supply Chains - Exploring Resource Efficiency through Individual Supply Chains
+
+  :Conference: 22. International Input-Output Conference
+  :Date: 14-18 July 2014
+  :Location: Lisbon, Portugal
+  :Slides: `10.5281/zenodo.1137670 <http://doi.org/10.5281/zenodo.1137670>`_
+
+

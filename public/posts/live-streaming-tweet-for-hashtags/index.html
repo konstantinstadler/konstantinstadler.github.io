@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live streaming tweet for hashtags | Konstantin Stadler</title>
+<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Konstantin Stadler">
+<link rel="prev" href="../setting-up-a-website-with-Nikola/" title="Setting up a website with Nikola" type="text/html">
+<link rel="next" href="../sentiment-analysis-with-vader/" title="Sentiment Analysis with VADER" type="text/html">
+<meta property="og:site_name" content="Konstantin Stadler">
+<meta property="og:title" content="Live streaming tweet for hashtags">
+<meta property="og:url" content="https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/">
+<meta property="og:description" content="Streaming of tweets for hashtags and keywords¶
+
+
+
+
+
+
+This notebook explains how to search the live twitter stream for certain hashtags and keywords.
+The gathered tweets are stored as text files and fu">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-11-22T13:59:02+01:00">
+<meta property="article:tag" content="pandas">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="streaming">
+<meta property="article:tag" content="twitter">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div id="wrapper">
+   <div class="overlay" style="max-width:300px"></div>
+
+   <!-- Sidebar -->
+   <nav class="navbar navbar-inverse fixed-top" style="background: #073642" , id="sidebar-wrapper" role="navigation"><ul class="nav sidebar-nav">
+<div class="sidebar-header">
+               <div class="sidebar-brand">
+                  <a href="../../">
+                  <img src="../../images/20201030_122424.jpg" style="max-width: 65%" alt="Konstantin"></a>
+                   <h4>
+                      <a href="../../about/">Konstantin Stadler</a>
+                  </h4>
+                   <p> Research Software Engineer <br>
+                   Scientist </p>
+                   <p>Follow me:  
+                   <a href="https://www.twitter.com/kst_stadler/">
+                   <i class="fa fa-twitter" aria-hidden="true"></i>
+                   |
+                   </a>
+                   <a href="https://github.com/konstantinstadler/">
+                   <i class="fa fa-github" aria-hidden="true"></i>
+                   |
+                   </a>
+                   <a href="https://gitlab.com/konstantinstadler/">
+                   <i class="fa fa-gitlab" aria-hidden="true"></i>
+                   |
+                   </a>
+                   <a href="https://no.linkedin.com/in/konstantinstadler/">
+                   <i class="fa fa-linkedin" aria-hidden="true"></i>
+                   </a>
+
+               </p>
+</div>
+           </div>
+
+           <ul class="navbar-nav mr-auto">
+                
+               <br>
+                
+               
+                <li class="nav-item">
+<a href="../../" class="nav-link">Home</a>
+                </li>
+<li class="nav-item">
+<a href="../../publications" class="nav-link">Publications</a>
+                </li>
+<li class="nav-item">
+<a href="../../projects" class="nav-link">Projects</a>
+                </li>
+<li class="nav-item">
+<a href="../../presentations" class="nav-link">Presentations</a>
+                </li>
+<li class="nav-item">
+<a href="../../blog" class="nav-link">Blog</a>
+                </li>
+<li class="nav-item">
+<a href="../../about" class="nav-link">About Me</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS feed</a>
+
+               
+           </li>
+</ul>
+<span class="navbar-text">
+             <i class="fa fa-copyright" aria-hidden="true"></i>  
+             Konstantin Stadler. Licenced under
+             <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+         </span>
+
+       </ul></nav><!-- /#sidebar-wrapper --><!-- End of Sidebar --><!-- Page Content --><div id="page-content-wrapper">
+    <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+</button>
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Live streaming tweet for hashtags</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Konstantin Stadler
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-11-22T13:59:02+01:00" itemprop="datePublished" title="2019-11-22 13:59">2019-11-22 13:59</time></a>
+            </p>
+            
+        <p class="sourceline"><a href="index.ipynb" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Streaming-of-tweets-for-hashtags-and-keywords">Streaming of tweets for hashtags and keywords<a class="anchor-link" href="#Streaming-of-tweets-for-hashtags-and-keywords">¶</a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This notebook explains how to search the live twitter stream for certain hashtags and keywords.
+The gathered tweets are stored as text files and further processed into a panda DataFrame.</p>
+<p>The script is designed for long term streaming with gathered tweets stored in succeeding files.</p>
+<!-- TEASER_END -->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Note</strong>: This notebook is not directly runable since personalized OAuths keys are required to access the Twitter API. See below for how to obtain them. Once you have OAuth keys, save them in a json file and point to this file in script described in "Harvesting tweets".</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Prerequisites">Prerequisites<a class="anchor-link" href="#Prerequisites">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the streaming of the twitter stream, we will use <a href="http://www.tweepy.org/">Tweepy</a>.
+Currently (by 22.11.2017) there is a bug in the Tweepy version available at PyPI which breaks the code for certain twitter responses.
+A bug fixed version of Tweepy is available at the source code repo here: <a href="https://github.com/tweepy/tweepy">https://github.com/tweepy/tweepy</a></p>
+<p>To install from source, clone the repository and install locally as explained in the readme file:</p>
+<pre><code>git clone https://github.com/tweepy/tweepy.git
+cd tweepy
+python setup.py install
+</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To start using the Twitter API, we also need <a href="https://en.wikipedia.org/wiki/OAuth">OAuth keys</a> to grant us access rights.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To generate these, login into your twitter account and generate a new application at <a href="https://apps.twitter.com">https://apps.twitter.com</a> with read and write access rights. You can find further information about the OAuth of Twitter at the <a href="https://developer.twitter.com/en/docs/basics/authentication/overview/oauth">Twitter developer guide</a>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Once you have tweepy installed and the OAuth keys you are ready to go.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Harvesting-tweets">Harvesting tweets<a class="anchor-link" href="#Harvesting-tweets">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tweepy</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First, we need a function providing the OAuths keys obtained above.
+The example function below assumes that the OAuths keys are stored in a json file.
+This should have the following format:</p>
+<pre><code>{
+"consumer_key": "str_sequence",
+"consumer_secret": "str_sequence",
+"access_token": "str_sequence",
+"access_secret": "str_sequence"
+}
+</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_oauth_from_file</span><span class="p">(</span><span class="n">oauth_file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">""" Provides oauth keys stored in json file 'oauth_file'</span>
+<span class="sd">    """</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">oauth_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+
+    <span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="s2">"consumer_key"</span><span class="p">],</span> 
+                               <span class="n">keys</span><span class="p">[</span><span class="s2">"consumer_secret"</span><span class="p">])</span>
+    <span class="n">auth</span><span class="o">.</span><span class="n">set_access_token</span><span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="s2">"access_token"</span><span class="p">],</span> 
+                          <span class="n">keys</span><span class="p">[</span><span class="s2">"access_secret"</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">auth</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, we design a custom Twitter listener which saves the gathered tweets in succeeding files (for further information on how to design your own StreamListener check the <a href="http://tweepy.readthedocs.io/en/latest/streaming_how_to.html">tweepy docs for this topic</a>).</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyListener</span><span class="p">(</span><span class="n">tweepy</span><span class="o">.</span><span class="n">streaming</span><span class="o">.</span><span class="n">StreamListener</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">storage_folder</span><span class="p">,</span> <span class="n">base_file_name</span><span class="p">,</span> <span class="n">nr_tweet_per_file</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">""" Twitter listener storing tweets as json entries in a file</span>
+<span class="sd">        </span>
+<span class="sd">        Note</span>
+<span class="sd">        -----</span>
+<span class="sd">        The tweets are stored as a list of json entries in a file.</span>
+<span class="sd">        Thus, every line in the resulting file is a valid json entry.</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        </span>
+<span class="sd">        storage_folder: str</span>
+<span class="sd">            Folder for storing the tweets. Will be created if not existing.</span>
+<span class="sd">            Already existing files matching the base_file_name will be overwritten!</span>
+<span class="sd">            </span>
+<span class="sd">        base_file_name: str</span>
+<span class="sd">            Basename of the file for storing tweets. </span>
+<span class="sd">            E.g. 'tweets' would result in </span>
+<span class="sd">                'tweet0000000000.jsons'</span>
+<span class="sd">                'tweet0000000001.jsons'</span>
+<span class="sd">                ...</span>
+<span class="sd">        nr_tweet_per_file: int, optional</span>
+<span class="sd">            How many tweets to store in one json file (default: 1000)</span>
+<span class="sd">            </span>
+<span class="sd">        """</span>
+        <span class="k">try</span><span class="p">:</span> 
+            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">storage_folder</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">store_base</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">storage_folder</span><span class="p">,</span> <span class="n">base_file_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nr_tweet_per_file</span> <span class="o">=</span> <span class="n">nr_tweet_per_file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">counter_tweets</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">counter_files</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr_tweet_per_file</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter_tweets</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">counter_files</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">counter_tweets</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">counter_tweets</span> <span class="o">+=</span> <span class="mi">1</span>
+                
+            <span class="n">current_file</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">store_base</span> <span class="o">+</span> 
+                    <span class="s1">'_'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">counter_files</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">+</span>
+                    <span class="s1">'.jsons'</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">current_file</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Error on_data: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="kc">True</span>
+ 
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, we define the hashtags, keywords and usernames which we would like to stream (here an example of the cop22 and cop23 streaming):</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">twitter_tracking_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'@COP22'</span><span class="p">,</span> <span class="s1">'cop22'</span><span class="p">,</span> <span class="s1">'#COP'</span><span class="p">,</span> <span class="s1">'#cop22'</span><span class="p">,</span> 
+    <span class="s1">'@COP23'</span><span class="p">,</span> <span class="s1">'cop23'</span><span class="p">,</span> <span class="s1">'#COP'</span><span class="p">,</span> <span class="s1">'#cop23'</span><span class="p">,</span> 
+    <span class="s1">'#climatechange'</span><span class="p">,</span> <span class="s1">'#climateaction'</span><span class="p">,</span> 
+    <span class="s1">'#ParisAgreement'</span><span class="p">,</span> <span class="s1">'#globalwarming'</span><span class="p">,</span> <span class="s1">'#beforetheflood'</span><span class="p">,</span> 
+    <span class="s1">'#actonclimate'</span><span class="p">,</span> <span class="s1">'#climate'</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now everything is setup and we can start streaming:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Started streaming tweets'</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">twitter_stream</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Stream</span><span class="p">(</span>
+            <span class="n">auth</span><span class="o">=</span><span class="n">get_oauth_from_file</span><span class="p">(</span><span class="n">oauth_file</span><span class="o">=</span><span class="s1">'/tmp/OAuthTwitter.json'</span><span class="p">),</span>
+            <span class="n">listener</span><span class="o">=</span><span class="n">MyListener</span><span class="p">(</span><span class="n">storage_folder</span><span class="o">=</span><span class="s1">'/tmp/twitter_stream'</span><span class="p">,</span>
+                                <span class="n">base_file_name</span><span class="o">=</span><span class="s1">'tweets'</span><span class="p">))</span>
+        <span class="n">twitter_stream</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">track</span><span class="o">=</span><span class="n">twitter_tracking_list</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Stopped streaming tweets'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Started streaming tweets
+Stopped streaming tweets
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To stop the streaming interrupt the kernel with:</p>
+<pre><code>- Jupyter notebook: Press the stop button or choose "Interrupt" from the "Kernel" menu
+- Script: Press Control-C</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The tweets are stored as json entries in the files in the specified folder.
+These can easily be read in Python with:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'/tmp/twitter_stream/tweets_0000000000.jsons'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">twitter_jsons</span><span class="p">:</span>
+        <span class="n">tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">twitter_jsons</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">tweets</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[7]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>[{'contributors': None,
+  'coordinates': None,
+  'created_at': 'Fri Nov 10 17:46:32 +0000 2017',
+  'entities': {'hashtags': [],
+   'symbols': [],
+   'urls': [{'display_url': 'blog.education.nationalgeographic.com/2017/11/09/cli…',
+     'expanded_url': 'https://blog.education.nationalgeographic.com/2017/11/09/climate-action-250-schools-69-countries-focusing-on-climate-change',
+     'indices': [84, 107],
+     'url': 'https://t.co/gJRNyyAky1'}],
+   'user_mentions': [{'id': 149593681,
+     'id_str': '149593681',
+     'indices': [3, 14],
+     'name': 'Koen Timmers',
+     'screen_name': 'zelfstudie'},
+    {'id': 136441843,
+     'id_str': '136441843',
+     'indices': [108, 124],
+     'name': 'NatGeo Education',
+     'screen_name': 'NatGeoEducation'}]},
+  'favorite_count': 0,
+  'favorited': False,
+  'filter_level': 'low',
+  'geo': None,
+  'id': 929042603479269377,
+  'id_str': '929042603479269377',
+  'in_reply_to_screen_name': None,
+  'in_reply_to_status_id': None,
+  'in_reply_to_status_id_str': None,
+  'in_reply_to_user_id': None,
+  'in_reply_to_user_id_str': None,
+  'is_quote_status': False,
+  'lang': 'en',
+  'place': None,
+  'possibly_sensitive': False,
+  'quote_count': 0,
+  'reply_count': 0,
+  'retweet_count': 0,
+  'retweeted': False,
+  'retweeted_status': {'contributors': None,
+   'coordinates': None,
+   'created_at': 'Thu Nov 09 17:30:01 +0000 2017',
+   'display_text_range': [0, 140],
+   'entities': {'hashtags': [],
+    'symbols': [],
+    'urls': [{'display_url': 'blog.education.nationalgeographic.com/2017/11/09/cli…',
+      'expanded_url': 'https://blog.education.nationalgeographic.com/2017/11/09/climate-action-250-schools-69-countries-focusing-on-climate-change',
+      'indices': [68, 91],
+      'url': 'https://t.co/gJRNyyAky1'},
+     {'display_url': 'twitter.com/i/web/status/9…',
+      'expanded_url': 'https://twitter.com/i/web/status/928676060069269509',
+      'indices': [110, 133],
+      'url': 'https://t.co/0Ua4kwQU1p'}],
+    'user_mentions': [{'id': 136441843,
+      'id_str': '136441843',
+      'indices': [92, 108],
+      'name': 'NatGeo Education',
+      'screen_name': 'NatGeoEducation'}]},
+   'extended_tweet': {'display_text_range': [0, 155],
+    'entities': {'hashtags': [{'indices': [109, 123], 'text': 'climatechange'},
+      {'indices': [124, 139], 'text': 'climateactionp'},
+      {'indices': [140, 155], 'text': 'teachersmatter'}],
+     'media': [{'display_url': 'pic.twitter.com/fFhRDnCbUQ',
+       'expanded_url': 'https://twitter.com/zelfstudie/status/928676060069269509/photo/1',
+       'id': 928674531937538048,
+       'id_str': '928674531937538048',
+       'indices': [156, 179],
+       'media_url': 'http://pbs.twimg.com/media/DONQkQQW0AAuZYH.jpg',
+       'media_url_https': 'https://pbs.twimg.com/media/DONQkQQW0AAuZYH.jpg',
+       'sizes': {'large': {'h': 838, 'resize': 'fit', 'w': 945},
+        'medium': {'h': 838, 'resize': 'fit', 'w': 945},
+        'small': {'h': 603, 'resize': 'fit', 'w': 680},
+        'thumb': {'h': 150, 'resize': 'crop', 'w': 150}},
+       'type': 'photo',
+       'url': 'https://t.co/fFhRDnCbUQ'}],
+     'symbols': [],
+     'urls': [{'display_url': 'blog.education.nationalgeographic.com/2017/11/09/cli…',
+       'expanded_url': 'https://blog.education.nationalgeographic.com/2017/11/09/climate-action-250-schools-69-countries-focusing-on-climate-change',
+       'indices': [68, 91],
+       'url': 'https://t.co/gJRNyyAky1'}],
+     'user_mentions': [{'id': 136441843,
+       'id_str': '136441843',
+       'indices': [92, 108],
+       'name': 'NatGeo Education',
+       'screen_name': 'NatGeoEducation'}]},
+    'extended_entities': {'media': [{'display_url': 'pic.twitter.com/fFhRDnCbUQ',
+       'expanded_url': 'https://twitter.com/zelfstudie/status/928676060069269509/photo/1',
+       'id': 928674531937538048,
+       'id_str': '928674531937538048',
+       'indices': [156, 179],
+       'media_url': 'http://pbs.twimg.com/media/DONQkQQW0AAuZYH.jpg',
+       'media_url_https': 'https://pbs.twimg.com/media/DONQkQQW0AAuZYH.jpg',
+       'sizes': {'large': {'h': 838, 'resize': 'fit', 'w': 945},
+        'medium': {'h': 838, 'resize': 'fit', 'w': 945},
+        'small': {'h': 603, 'resize': 'fit', 'w': 680},
+        'thumb': {'h': 150, 'resize': 'crop', 'w': 150}},
+       'type': 'photo',
+       'url': 'https://t.co/fFhRDnCbUQ'}]},
+    'full_text': 'The Climate Action project covered by National Geographic Education\nhttps://t.co/gJRNyyAky1 @NatGeoEducation #climatechange #climateactionp #teachersmatter https://t.co/fFhRDnCbUQ'},
+   'favorite_count': 70,
+   'favorited': False,
+   'filter_level': 'low',
+   'geo': None,
+   'id': 928676060069269509,
+   'id_str': '928676060069269509',
+   'in_reply_to_screen_name': None,
+   'in_reply_to_status_id': None,
+   'in_reply_to_status_id_str': None,
+   'in_reply_to_user_id': None,
+   'in_reply_to_user_id_str': None,
+   'is_quote_status': False,
+   'lang': 'en',
+   'place': None,
+   'possibly_sensitive': False,
+   'quote_count': 11,
+   'reply_count': 7,
+   'retweet_count': 34,
+   'retweeted': False,
+   'source': '&lt;a href="http://twitter.com" rel="nofollow"&gt;Twitter Web Client&lt;/a&gt;',
+   'text': 'The Climate Action project covered by National Geographic Education\nhttps://t.co/gJRNyyAky1 @NatGeoEducation… https://t.co/0Ua4kwQU1p',
+   'truncated': True,
+   'user': {'contributors_enabled': False,
+    'created_at': 'Sat May 29 17:52:29 +0000 2010',
+    'default_profile': False,
+    'default_profile_image': False,
+    'description': '@TeacherPrize Top 50 teacher | Teaching Kakuma Refugees via Skype | Author | Speaker | Technology Enhanced Learning | Founder zelfstudie.be | MIE Fellow',
+    'favourites_count': 8248,
+    'follow_request_sent': None,
+    'followers_count': 3816,
+    'following': None,
+    'friends_count': 2711,
+    'geo_enabled': True,
+    'id': 149593681,
+    'id_str': '149593681',
+    'is_translator': False,
+    'lang': 'nl',
+    'listed_count': 331,
+    'location': 'Belgium',
+    'name': 'Koen Timmers',
+    'notifications': None,
+    'profile_background_color': 'D0D0D0',
+    'profile_background_image_url': 'http://pbs.twimg.com/profile_background_images/375133972/bg-twitter.jpg',
+    'profile_background_image_url_https': 'https://pbs.twimg.com/profile_background_images/375133972/bg-twitter.jpg',
+    'profile_background_tile': False,
+    'profile_banner_url': 'https://pbs.twimg.com/profile_banners/149593681/1498040391',
+    'profile_image_url': 'http://pbs.twimg.com/profile_images/808926736851357696/_LIvoZ7Q_normal.jpg',
+    'profile_image_url_https': 'https://pbs.twimg.com/profile_images/808926736851357696/_LIvoZ7Q_normal.jpg',
+    'profile_link_color': 'D9650D',
+    'profile_sidebar_border_color': '0D0202',
+    'profile_sidebar_fill_color': 'EDA426',
+    'profile_text_color': '333333',
+    'profile_use_background_image': True,
+    'protected': False,
+    'screen_name': 'zelfstudie',
+    'statuses_count': 7064,
+    'time_zone': 'Brussels',
+    'translator_type': 'none',
+    'url': 'http://www.timmers.me',
+    'utc_offset': 3600,
+    'verified': False}},
+  'source': '&lt;a href="http://twitter.com/download/iphone" rel="nofollow"&gt;Twitter for iPhone&lt;/a&gt;',
+  'text': 'RT @zelfstudie: The Climate Action project covered by National Geographic Education\nhttps://t.co/gJRNyyAky1 @NatGeoEducation… ',
+  'timestamp_ms': '1510335992103',
+  'truncated': False,
+  'user': {'contributors_enabled': False,
+   'created_at': 'Tue Aug 18 19:59:41 +0000 2009',
+   'default_profile': False,
+   'default_profile_image': False,
+   'description': 'Head of Beta School &amp; Teacher. I #LoveToTeach because to teach is to empower others, to lead changes &amp; create the future!!! FC Lead Ambassador, MIE EXPERT',
+   'favourites_count': 945,
+   'follow_request_sent': None,
+   'followers_count': 218,
+   'following': None,
+   'friends_count': 121,
+   'geo_enabled': True,
+   'id': 66782856,
+   'id_str': '66782856',
+   'is_translator': False,
+   'lang': 'en',
+   'listed_count': 23,
+   'location': 'israel',
+   'name': 'karina',
+   'notifications': None,
+   'profile_background_color': 'BF1238',
+   'profile_background_image_url': 'http://abs.twimg.com/images/themes/theme20/bg.png',
+   'profile_background_image_url_https': 'https://abs.twimg.com/images/themes/theme20/bg.png',
+   'profile_background_tile': False,
+   'profile_banner_url': 'https://pbs.twimg.com/profile_banners/66782856/1461433147',
+   'profile_image_url': 'http://pbs.twimg.com/profile_images/902939255093284865/0zsSHLvE_normal.jpg',
+   'profile_image_url_https': 'https://pbs.twimg.com/profile_images/902939255093284865/0zsSHLvE_normal.jpg',
+   'profile_link_color': 'BF1238',
+   'profile_sidebar_border_color': 'FFFFFF',
+   'profile_sidebar_fill_color': 'EFEFEF',
+   'profile_text_color': '333333',
+   'profile_use_background_image': True,
+   'protected': False,
+   'screen_name': 'karinam60',
+   'statuses_count': 1519,
+   'time_zone': 'Jerusalem',
+   'translator_type': 'none',
+   'url': 'http://karinam60.wix.com/betasefer',
+   'utc_offset': 7200,
+   'verified': False}},
+ {'contributors': None,
+  'coordinates': None,
+  'created_at': 'Fri Nov 10 17:46:35 +0000 2017',
+  'entities': {'hashtags': [{'indices': [0, 14], 'text': 'ClimateChange'}],
+   'symbols': [],
+   'urls': [{'display_url': 'ift.tt/2yq4q9t',
+     'expanded_url': 'http://ift.tt/2yq4q9t',
+     'indices': [59, 82],
+     'url': 'https://t.co/J7o95JylhR'}],
+   'user_mentions': []},
+  'favorite_count': 0,
+  'favorited': False,
+  'filter_level': 'low',
+  'geo': None,
+  'id': 929042617765171201,
+  'id_str': '929042617765171201',
+  'in_reply_to_screen_name': None,
+  'in_reply_to_status_id': None,
+  'in_reply_to_status_id_str': None,
+  'in_reply_to_user_id': None,
+  'in_reply_to_user_id_str': None,
+  'is_quote_status': False,
+  'lang': 'it',
+  'place': None,
+  'possibly_sensitive': False,
+  'quote_count': 0,
+  'reply_count': 0,
+  'retweet_count': 0,
+  'retweeted': False,
+  'source': '&lt;a href="https://ifttt.com" rel="nofollow"&gt;IFTTT&lt;/a&gt;',
+  'text': '#ClimateChange: Ferma i finanziamenti. Ferma il gasdotto.: https://t.co/J7o95JylhR',
+  'timestamp_ms': '1510335995509',
+  'truncated': False,
+  'user': {'contributors_enabled': False,
+   'created_at': 'Fri Jan 21 20:04:39 +0000 2011',
+   'default_profile': False,
+   'default_profile_image': False,
+   'description': 'Watching frogs boil as #Banks, #BigCorp, #BigOil &amp; the #MilitaryIndustrialComplex use #Brainwashing &amp; #TwoPartyTyranny to take a little more life away each day.',
+   'favourites_count': 7,
+   'follow_request_sent': None,
+   'followers_count': 231,
+   'following': None,
+   'friends_count': 1,
+   'geo_enabled': False,
+   'id': 241240437,
+   'id_str': '241240437',
+   'is_translator': False,
+   'lang': 'en',
+   'listed_count': 81,
+   'location': 'Free Palestine | Save Gaza',
+   'name': 'IronBoltBruce',
+   'notifications': None,
+   'profile_background_color': '000000',
+   'profile_background_image_url': 'http://pbs.twimg.com/profile_background_images/443373680211406848/dWlLVPye.png',
+   'profile_background_image_url_https': 'https://pbs.twimg.com/profile_background_images/443373680211406848/dWlLVPye.png',
+   'profile_background_tile': False,
+   'profile_banner_url': 'https://pbs.twimg.com/profile_banners/241240437/1444648350',
+   'profile_image_url': 'http://pbs.twimg.com/profile_images/462512490761297920/i7V3sGFl_normal.png',
+   'profile_image_url_https': 'https://pbs.twimg.com/profile_images/462512490761297920/i7V3sGFl_normal.png',
+   'profile_link_color': 'FD6304',
+   'profile_sidebar_border_color': '000000',
+   'profile_sidebar_fill_color': 'C0DFEC',
+   'profile_text_color': '333333',
+   'profile_use_background_image': False,
+   'protected': False,
+   'screen_name': 'WatchFrogsBoil',
+   'statuses_count': 100618,
+   'time_zone': 'Central Time (US &amp; Canada)',
+   'translator_type': 'none',
+   'url': 'http://IronBoltBruce.com',
+   'utc_offset': -21600,
+   'verified': False}}]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Parsing-tweets-into-pandas-DataFrame-and-store-as-csv">Parsing tweets into pandas DataFrame and store as csv<a class="anchor-link" href="#Parsing-tweets-into-pandas-DataFrame-and-store-as-csv">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Once we are finished streaming tweets, we can process the files into a <a href="https://pandas.pydata.org/">pandas</a> <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html">DataFrame</a>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First, we define a function which extracts the interesting information of a specific tweet:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">parse_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">""" Parse an individual tweet into a dict</span>
+<span class="sd">    """</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_list_from_dict_list</span><span class="p">(</span><span class="n">list_of_dict</span><span class="p">,</span> <span class="n">ik</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">""" Extract values from a list of dictionaries</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        -----------</span>
+<span class="sd">        list_of_dict : list of dictonaries with same key</span>
+
+<span class="sd">        ik : key for the dict to extract</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of extracted items or None</span>
+<span class="sd">        """</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">list_result</span> <span class="o">=</span> <span class="p">[</span><span class="n">dd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ik</span><span class="p">)</span> <span class="k">for</span> <span class="n">dd</span> <span class="ow">in</span> <span class="n">list_of_dict</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="n">list_result</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">list_result</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">extractor_closure</span><span class="p">(</span><span class="n">tweet_dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Closure for extracting nested entries from a dict</span>
+<span class="sd">        """</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">get_item</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+            <span class="n">dd_nested</span><span class="o">=</span><span class="n">tweet_dict</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+                <span class="n">dd_nested</span> <span class="o">=</span> <span class="n">dd_nested</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">dd_nested</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">return</span> <span class="n">dd_nested</span>
+        <span class="k">return</span> <span class="n">get_item</span>
+
+    <span class="n">extractor</span> <span class="o">=</span> <span class="n">extractor_closure</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+       
+    <span class="n">dd_extract</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">'id'</span> <span class="p">:</span> <span class="n">extractor</span><span class="p">(</span><span class="s1">'id'</span><span class="p">),</span>
+        <span class="s1">'created_at'</span> <span class="p">:</span> <span class="n">extractor</span><span class="p">(</span><span class="s1">'created_at'</span><span class="p">),</span>
+        <span class="s1">'lang'</span> <span class="p">:</span> <span class="n">extractor</span><span class="p">(</span><span class="s1">'lang'</span><span class="p">),</span>
+        <span class="s1">'text'</span> <span class="p">:</span> <span class="n">extractor</span><span class="p">(</span><span class="s1">'text'</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\r</span><span class="s1">'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">)</span> <span class="k">if</span> <span class="n">extractor</span><span class="p">(</span><span class="s1">'text'</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">'user_name'</span> <span class="p">:</span> <span class="n">extractor</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">),</span>
+        <span class="s1">'screen_name'</span> <span class="p">:</span> <span class="n">extractor</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="s1">'screen_name'</span><span class="p">),</span>
+        <span class="s1">'followers_count'</span> <span class="p">:</span> <span class="n">extractor</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="s1">'followers_count'</span><span class="p">),</span>
+        <span class="s1">'country'</span> <span class="p">:</span> <span class="n">extractor</span><span class="p">(</span><span class="s1">'place'</span><span class="p">,</span> <span class="s1">'country_code'</span><span class="p">),</span>
+        <span class="s1">'place'</span> <span class="p">:</span> <span class="n">extractor</span><span class="p">(</span><span class="s1">'place'</span><span class="p">,</span> <span class="s1">'full_name'</span><span class="p">),</span>
+        <span class="s1">'user_mentions_names'</span> <span class="p">:</span> <span class="n">get_list_from_dict_list</span><span class="p">(</span>
+                <span class="n">extractor</span><span class="p">(</span><span class="s1">'entities'</span><span class="p">,</span> <span class="s1">'user_mentions'</span><span class="p">),</span> <span class="s1">'screen_name'</span><span class="p">),</span>
+        <span class="s1">'hashtags'</span> <span class="p">:</span> <span class="n">get_list_from_dict_list</span><span class="p">(</span>
+                <span class="n">extractor</span><span class="p">(</span><span class="s1">'entities'</span><span class="p">,</span> <span class="s1">'hashtags'</span><span class="p">),</span> <span class="s1">'text'</span><span class="p">),</span>
+        <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">dd_extract</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, we define a function which parsed one jsons file into a pandas DataFrame:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">jsons_to_df</span><span class="p">(</span><span class="n">jsons_file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Read the jsons file and return the content as pandas DataFrame"""</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">jsons_file</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">twitter_jsons</span><span class="p">:</span>
+        <span class="n">list_tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">parse_tweet</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">))</span> 
+                       <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">twitter_jsons</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">list_tweets</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To run the parser over all gathered files, we need a list of these files:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">tweets_folder</span> <span class="o">=</span> <span class="s1">'/tmp/twitter_stream/'</span>
+<span class="n">list_jsons_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tweets_folder</span><span class="p">,</span> <span class="n">tweets_file</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">tweets_file</span> <span class="ow">in</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">tweets_folder</span><span class="p">)</span> <span class="k">if</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">tweets_file</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'.jsons'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can than process all gathers tweets into a pandas DataFrame, removing duplicate tweets:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_tweets</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">jsons_to_df</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span> <span class="k">for</span> <span class="n">ff</span> <span class="ow">in</span> <span class="n">list_jsons_files</span><span class="p">])</span><span class="o">.</span>
+             <span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">'id'</span><span class="p">)</span><span class="o">.</span>
+             <span class="n">sort_values</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span><span class="o">.</span>
+             <span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To store the English tweets we can than use</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_eng</span> <span class="o">=</span> <span class="n">df_tweets</span><span class="p">[</span><span class="n">df_tweets</span><span class="p">[</span><span class="s1">'lang'</span><span class="p">]</span><span class="o">==</span><span class="s1">'en'</span><span class="p">]</span>
+<span class="n">df_eng</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'/tmp/eng_tweets.csv'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">'|'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_eng</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[14]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+<th>country</th>
+<th>created_at</th>
+<th>followers_count</th>
+<th>hashtags</th>
+<th>id</th>
+<th>lang</th>
+<th>place</th>
+<th>screen_name</th>
+<th>text</th>
+<th>user_mentions_names</th>
+<th>user_name</th>
+</tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>None</td>
+<td>Fri Nov 10 17:46:32 +0000 2017</td>
+<td>218</td>
+<td>[]</td>
+<td>929042603479269377</td>
+<td>en</td>
+<td>None</td>
+<td>karinam60</td>
+<td>RT @zelfstudie: The Climate Action project cov...</td>
+<td>[zelfstudie, NatGeoEducation]</td>
+<td>karina</td>
+</tr>
+<tr>
+<th>2</th>
+<td>None</td>
+<td>Fri Nov 10 17:46:36 +0000 2017</td>
+<td>184</td>
+<td>[paludiculture]</td>
+<td>929042620462092290</td>
+<td>en</td>
+<td>None</td>
+<td>DiannaKopansky</td>
+<td>RT @iki_bmub: “We have to make peatland wet ag...</td>
+<td>[iki_bmub, WetlandsInt]</td>
+<td>Dianna Kopansky</td>
+</tr>
+<tr>
+<th>4</th>
+<td>None</td>
+<td>Fri Nov 10 17:46:38 +0000 2017</td>
+<td>157</td>
+<td>[FastForward, ClimateAction, COP23]</td>
+<td>929042629597302789</td>
+<td>en</td>
+<td>None</td>
+<td>IreneAyaa</td>
+<td>RT @dw_akademie: Have a walk through the Bonn ...</td>
+<td>[dw_akademie]</td>
+<td>Irene Ayaa</td>
+</tr>
+<tr>
+<th>5</th>
+<td>None</td>
+<td>Fri Nov 10 17:46:38 +0000 2017</td>
+<td>2307</td>
+<td>[]</td>
+<td>929042631983812608</td>
+<td>en</td>
+<td>None</td>
+<td>TimmonsRoberts</td>
+<td>Snappy title on this in session document in th...</td>
+<td>[]</td>
+<td>Timmons Roberts</td>
+</tr>
+<tr>
+<th>6</th>
+<td>None</td>
+<td>Fri Nov 10 17:46:42 +0000 2017</td>
+<td>421</td>
+<td>[ClimateChange]</td>
+<td>929042646080692224</td>
+<td>en</td>
+<td>None</td>
+<td>gameing</td>
+<td>RT @Greenpeace: #ClimateChange is making storm...</td>
+<td>[Greenpeace]</td>
+<td>gameing</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How to process the resulting DataFrame will be the topic of the next notebook example.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Useful-links">Useful links<a class="anchor-link" href="#Useful-links">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://developer.twitter.com/en.html">Twitter development guide</a></li>
+<li><a href="http://tweepy.readthedocs.io/en/v3.5.0/index.html">Tweepy docs</a></li>
+</ul>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/pandas/" rel="tag">pandas</a></li>
+            <li><a class="tag p-category" href="../../categories/python/" rel="tag">python</a></li>
+            <li><a class="tag p-category" href="../../categories/streaming/" rel="tag">streaming</a></li>
+            <li><a class="tag p-category" href="../../categories/twitter/" rel="tag">twitter</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../setting-up-a-website-with-Nikola/" rel="prev" title="Setting up a website with Nikola">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../sentiment-analysis-with-vader/" rel="next" title="Sentiment Analysis with VADER">Next post</a>
+            </li>
+        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer"><a href="../../">Home</a>
+            
+            
+            
+        </footer>
+</div>
+</div>
+</div>
+<!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+
+            <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><script src="../../assets/js/sidebar.js"></script>'
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setting up a website with Nikola | Konstantin Stadler</title>
+<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Konstantin Stadler">
+<link rel="next" href="../live-streaming-tweet-for-hashtags/" title="Live streaming tweet for hashtags" type="text/html">
+<meta property="og:site_name" content="Konstantin Stadler">
+<meta property="og:title" content="Setting up a website with Nikola">
+<meta property="og:url" content="https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/">
+<meta property="og:description" content="Traditionally, the initial blog post on a custom made site desribes how to setup and build the site.
+However, there are already a plethora of such descriptions available.
+Therefore, I here rather shar">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-10-25T09:07:00+02:00">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div id="wrapper">
+   <div class="overlay" style="max-width:300px"></div>
+
+   <!-- Sidebar -->
+   <nav class="navbar navbar-inverse fixed-top" style="background: #073642" , id="sidebar-wrapper" role="navigation"><ul class="nav sidebar-nav">
+<div class="sidebar-header">
+               <div class="sidebar-brand">
+                  <a href="../../">
+                  <img src="../../images/20201030_122424.jpg" style="max-width: 65%" alt="Konstantin"></a>
+                   <h4>
+                      <a href="../../about/">Konstantin Stadler</a>
+                  </h4>
+                   <p> Research Software Engineer <br>
+                   Scientist </p>
+                   <p>Follow me:  
+                   <a href="https://www.twitter.com/kst_stadler/">
+                   <i class="fa fa-twitter" aria-hidden="true"></i>
+                   |
+                   </a>
+                   <a href="https://github.com/konstantinstadler/">
+                   <i class="fa fa-github" aria-hidden="true"></i>
+                   |
+                   </a>
+                   <a href="https://gitlab.com/konstantinstadler/">
+                   <i class="fa fa-gitlab" aria-hidden="true"></i>
+                   |
+                   </a>
+                   <a href="https://no.linkedin.com/in/konstantinstadler/">
+                   <i class="fa fa-linkedin" aria-hidden="true"></i>
+                   </a>
+
+               </p>
+</div>
+           </div>
+
+           <ul class="navbar-nav mr-auto">
+                
+               <br>
+                
+               
+                <li class="nav-item">
+<a href="../../" class="nav-link">Home</a>
+                </li>
+<li class="nav-item">
+<a href="../../publications" class="nav-link">Publications</a>
+                </li>
+<li class="nav-item">
+<a href="../../projects" class="nav-link">Projects</a>
+                </li>
+<li class="nav-item">
+<a href="../../presentations" class="nav-link">Presentations</a>
+                </li>
+<li class="nav-item">
+<a href="../../blog" class="nav-link">Blog</a>
+                </li>
+<li class="nav-item">
+<a href="../../about" class="nav-link">About Me</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS feed</a>
+
+               
+           </li>
+</ul>
+<span class="navbar-text">
+             <i class="fa fa-copyright" aria-hidden="true"></i>  
+             Konstantin Stadler. Licenced under
+             <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+         </span>
+
+       </ul></nav><!-- /#sidebar-wrapper --><!-- End of Sidebar --><!-- Page Content --><div id="page-content-wrapper">
+    <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+</button>
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Setting up a website with Nikola</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Konstantin Stadler
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-10-25T09:07:00+02:00" itemprop="datePublished" title="2019-10-25 09:07">2019-10-25 09:07</time></a>
+            </p>
+            
+        <p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>Traditionally, the initial blog post on a custom made site desribes how to setup and build the site.
+However, there are already a plethora of such descriptions available.
+Therefore, I here rather share my motivation for the <a class="reference internal" href="#why">why</a>, the outcome of my research about the <a class="reference internal" href="#how">how</a>, followed by some points about <a class="reference internal" href="#practicalities">practicalities</a>.</p>
+<!-- TEASER_END -->
+<section id="why-to-setup-your-own-website"><span id="why"></span><h2>Why to setup your own website</h2>
+<p>Given the large amount of available personalizable profile sites for academics (<a class="reference external" href="https://www.researchgate.net">ResearchGate</a>, <a class="reference external" href="https://www.academia.edu/">Academica</a>, <a class="reference external" href="https://www.scienceopen.com/">ScienceOpen</a> but also institutes webpages <a class="reference external" href="https://www.ntnu.edu/employees/konstantin.stadler">like my one here</a>) one might ask why to build an own one.</p>
+<p>For me, it is about taking back control:
+Control about what is presented on a profile, control about how it is presented, and, not at last, control to what other resources I want to link my content.</p>
+<p>Don’t get me wrong.
+I very much welcomed the final arrival of web 2.0 to the research community.
+The social web for researchers were an important stepping stone for me personally - and I believe also for the broader scientific community -
+for disseminating research results and connecting to other research(ers).
+However, I think it is time to move on.</p>
+<p>We scientists gather and handle increasing amount of data, often develop our own analysis software and publish research outcomes on a daily basis.
+I think, we should also take the collecting and presenting of our research efforts in our own hands.</p>
+</section><section id="how-to-build-a-website"><span id="how"></span><h2>How to build a website</h2>
+<p>Having decided on building my own website, I had to find a way to do that.</p>
+<p>From the beginning I had a pretty good idea what I wanted to accomplish with the website.
+I wanted a framework for building the website which</p>
+<blockquote>
+<ul class="simple">
+<li><p>is open source</p></li>
+<li><p>is reasonable fast (ergo a static website generator)</p></li>
+<li><p>is well documented</p></li>
+<li><p>works well with <a class="reference external" href="https://www.gitlab.com/">Gitlab</a> or <a class="reference external" href="https://www.github.com/">Github</a></p></li>
+<li><p>allows to include <a class="reference external" href="http://jupyter.org/">Jupyter notebooks</a></p></li>
+</ul>
+</blockquote>
+<p>There are plenty of open static website generators available (see for example <a class="reference external" href="https://www.staticgen.com/">here</a>).</p>
+<p>After some research, the choice come down to either <a class="reference external" href="https://gohugo.io/">Hugo</a> or <a class="reference external" href="https://getnikola.com/">Nikola</a>.
+Hugo provides some blazing fast website generation (the actual program is a single executable written in Go).
+In addition, the Hugo community developed tons of beautiful themes (see the <a class="reference external" href="https://themes.gohugo.io/">Hugo theme gallery</a>),
+including one <a class="reference external" href="https://sourcethemes.com/academic/">theme specifically developed for academics</a>.
+The latter almost tipped the scale towards Hugo. What Hugo is lacking, however, is a native support for <a class="reference external" href="http://jupyter.org/">Jupyter notebooks</a>.</p>
+<p>This is in contrast to <a class="reference external" href="https://getnikola.com/">Nikola</a>, which allows to write posts in several markdown languages (among others my preferred
+<a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">reStructuredText</a> format) as well as in <a class="reference external" href="http://jupyter.org/">Jupyter notebooks</a>.
+Nikola also provides multiple themes and it is quite easy to adopt any bootwatch based theme (see <a class="reference internal" href="#custom-theme">Custom theme</a> below).
+Thus, I finally decided to give <a class="reference external" href="https://getnikola.com/">Nikola</a> a try.</p>
+</section><section id="setting-up-nikola"><span id="practicalities"></span><h2>Setting up Nikola</h2>
+<p>First, install Nikola.</p>
+<p>It is good practice, to install it in a virtual environment (either virtualenv or conda).
+See the <a class="reference external" href="https://getNikola.com/getting-started.html">Nikola getting started guide</a> for further information.</p>
+<p>If you want to use an Anaconda environment, <a class="reference external" href="https://tcluri.github.io/posts/how-this-blog-is-setup/">Tejaa Chintaluri has some good tips</a>.</p>
+<p>After activating the virtual or anaconda environment, install Nikola with</p>
+<div class="code"><pre class="code bash"><a id="rest_code_7982bf671abe4f95a1f6f316f9c1e425-1" name="rest_code_7982bf671abe4f95a1f6f316f9c1e425-1" href="#rest_code_7982bf671abe4f95a1f6f316f9c1e425-1"></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>Nikola
+<a id="rest_code_7982bf671abe4f95a1f6f316f9c1e425-2" name="rest_code_7982bf671abe4f95a1f6f316f9c1e425-2" href="#rest_code_7982bf671abe4f95a1f6f316f9c1e425-2"></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span><span class="s2">"Nikola[extras]"</span>
+</pre></div>
+<p>After that, follow the <a class="reference external" href="https://getNikola.com/getting-started.html">Nikola getting started guide</a> guide to build you first test site.</p>
+</section><section id="hosting-your-website"><h2>Hosting your website</h2>
+<p><a class="reference external" href="https://www.gitlab.com/">Gitlab</a> and <a class="reference external" href="https://www.github.com/">Github</a> provide a space for hosting your website.</p>
+<p>I did not test with Github, but I think you would need to push the content of the build directory ("output" or "public", depending on your conf.py setting for  OUTPUT_FOLDER) to your remote repository.
+See the <a class="reference external" href="https://pages.github.com/">Github pages documentation</a> for further information.</p>
+<p>Gitlab will build your website for you on a virtual machine in a Docker container.
+To set this up, you need to set the OUTPUT_FOLDER in <cite>conf.py</cite> to "public" and include a <cite>.gitlab.yml</cite> file in your webpage repo.</p>
+<p>Below the example <cite>.gitlab.yml</cite> of this website:</p>
+<div class="code"><pre class="code yaml"><a id="rest_code_cb5c9049689548d1a50ffb5508854794-1" name="rest_code_cb5c9049689548d1a50ffb5508854794-1" href="#rest_code_cb5c9049689548d1a50ffb5508854794-1"></a><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.gitlab.com/paddy-hack/Nikola</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-2" name="rest_code_cb5c9049689548d1a50ffb5508854794-2" href="#rest_code_cb5c9049689548d1a50ffb5508854794-2"></a>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-3" name="rest_code_cb5c9049689548d1a50ffb5508854794-3" href="#rest_code_cb5c9049689548d1a50ffb5508854794-3"></a><span class="nt">test</span><span class="p">:</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-4" name="rest_code_cb5c9049689548d1a50ffb5508854794-4" href="#rest_code_cb5c9049689548d1a50ffb5508854794-4"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-5" name="rest_code_cb5c9049689548d1a50ffb5508854794-5" href="#rest_code_cb5c9049689548d1a50ffb5508854794-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Nikola build</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-6" name="rest_code_cb5c9049689548d1a50ffb5508854794-6" href="#rest_code_cb5c9049689548d1a50ffb5508854794-6"></a><span class="w">  </span><span class="nt">except</span><span class="p">:</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-7" name="rest_code_cb5c9049689548d1a50ffb5508854794-7" href="#rest_code_cb5c9049689548d1a50ffb5508854794-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-8" name="rest_code_cb5c9049689548d1a50ffb5508854794-8" href="#rest_code_cb5c9049689548d1a50ffb5508854794-8"></a>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-9" name="rest_code_cb5c9049689548d1a50ffb5508854794-9" href="#rest_code_cb5c9049689548d1a50ffb5508854794-9"></a><span class="nt">pages</span><span class="p">:</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-10" name="rest_code_cb5c9049689548d1a50ffb5508854794-10" href="#rest_code_cb5c9049689548d1a50ffb5508854794-10"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-11" name="rest_code_cb5c9049689548d1a50ffb5508854794-11" href="#rest_code_cb5c9049689548d1a50ffb5508854794-11"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip3 install jupyter</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-12" name="rest_code_cb5c9049689548d1a50ffb5508854794-12" href="#rest_code_cb5c9049689548d1a50ffb5508854794-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Nikola build</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-13" name="rest_code_cb5c9049689548d1a50ffb5508854794-13" href="#rest_code_cb5c9049689548d1a50ffb5508854794-13"></a><span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-14" name="rest_code_cb5c9049689548d1a50ffb5508854794-14" href="#rest_code_cb5c9049689548d1a50ffb5508854794-14"></a><span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-15" name="rest_code_cb5c9049689548d1a50ffb5508854794-15" href="#rest_code_cb5c9049689548d1a50ffb5508854794-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-16" name="rest_code_cb5c9049689548d1a50ffb5508854794-16" href="#rest_code_cb5c9049689548d1a50ffb5508854794-16"></a><span class="w">  </span><span class="nt">only</span><span class="p">:</span>
+<a id="rest_code_cb5c9049689548d1a50ffb5508854794-17" name="rest_code_cb5c9049689548d1a50ffb5508854794-17" href="#rest_code_cb5c9049689548d1a50ffb5508854794-17"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span>
+</pre></div>
+<p>To get started, Gitlab also provides an <a class="reference external" href="https://gitlab.com/pages/Nikola">example webpage build with Nikola on Gitlab pages</a>.</p>
+<p>Note, that you have to include the line <cite>pip3 install jupyter</cite> in the <cite>.gitlab.yml</cite> file if you want to use Juypter notebooks.</p>
+<p>From there on you just need to push the source code of your website to your Gitlab remote repo and it will build automatically.
+Depending on the availability of the virtual machines you might have to wait a couple of minutes before the build process starts.
+You can track the process in the section CI/CD category (on the sidebar).</p>
+<p>For more information check the <a class="reference external" href="https://docs.gitlab.com/ee/user/project/pages/index.html">Gitlab pages documentation</a>.</p>
+</section><section id="further-tips-and-tricks"><h2>Further tips and tricks</h2>
+<section id="building-your-website"><h3>Building your website</h3>
+<div class="code"><pre class="code bash"><a id="rest_code_54a15fbe655c43069b395a260e55c431-1" name="rest_code_54a15fbe655c43069b395a260e55c431-1" href="#rest_code_54a15fbe655c43069b395a260e55c431-1"></a>nikola<span class="w"> </span>build
+<a id="rest_code_54a15fbe655c43069b395a260e55c431-2" name="rest_code_54a15fbe655c43069b395a260e55c431-2" href="#rest_code_54a15fbe655c43069b395a260e55c431-2"></a>nikola<span class="w"> </span>serve<span class="w"> </span>-b
+</pre></div>
+<p>However, if you work on your site, you might want to immediately see the consequences of your changes.
+You can continously build a Nikola site by:</p>
+<div class="code"><pre class="code bash"><a id="rest_code_ff7cfa511b3c4b9182f2104349161130-1" name="rest_code_ff7cfa511b3c4b9182f2104349161130-1" href="#rest_code_ff7cfa511b3c4b9182f2104349161130-1"></a>nikola<span class="w"> </span>auto<span class="w"> </span>-b
+</pre></div>
+</section><section id="custom-theme"><h3>Custom theme</h3>
+<p>Nikola already provides some themes (see <a class="reference external" href="https://themes.getnikola.com/">Nikola themes</a>).
+However, not all of theme are compatible with <a class="reference external" href="http://jupyter.org/">Jupyter notebooks</a> and/or look good on mobile devices.</p>
+<p>Generally, the <cite>Mako - Jinja2</cite> seems ok.</p>
+<p>You can also easily build your own bootstrap based theme by:</p>
+<div class="code"><pre class="code bash"><a id="rest_code_da3fa1b64bd945569944c7f0772c5156-1" name="rest_code_da3fa1b64bd945569944c7f0772c5156-1" href="#rest_code_da3fa1b64bd945569944c7f0772c5156-1"></a>nikola<span class="w"> </span>bootswatch_theme<span class="w"> </span>-n<span class="w"> </span>YOUR_CUSTOM_THEME_NAME<span class="w"> </span>-s<span class="w"> </span>BOOTSWATCH_THEME_NAME<span class="w"> </span>-p<span class="w"> </span>bootstrap3-jinja
+</pre></div>
+<p>You can find the <a class="reference external" href="https://bootswatch.com/">free bootswatch themes here.</a></p>
+</section></section>
+</div>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="next">
+                <a href="../live-streaming-tweet-for-hashtags/" rel="next" title="Live streaming tweet for hashtags">Next post</a>
+            </li>
+        </ul></nav></aside></article><!--End of body content--><footer id="footer"><a href="../../">Home</a>
+            
+            
+            
+        </footer>
+</div>
+</div>
+</div>
+<!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+
+            <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><script src="../../assets/js/sidebar.js"></script>'
+</body>
+</html>

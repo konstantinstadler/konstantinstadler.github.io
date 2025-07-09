@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Konstantin Stadler (Posts about pandas)</title><link>https://konstantinstadler.site/</link><description></description><atom:link href="https://konstantinstadler.site/categories/pandas.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2025 Konstantin Stadler 
+&lt;a rel="license" href="https://creativecommons.org/licenses/by/4.0/"&gt;
+&lt;img alt="Creative Commons License BY-NC-SA"
+style="border-width:0; margin-bottom:12px;"
+src="https://i.creativecommons.org/l/by/4.0/88x31.png"&gt;&lt;/a&gt;</copyright><lastBuildDate>Wed, 09 Jul 2025 09:37:50 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Automatic generation of google ngram graphs in Python</title><link>https://konstantinstadler.site/posts/google_ngram_in_python/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Automatic-generation-of-google-ngram-graphs-in-Python"&gt;Automatic generation of google ngram graphs in Python&lt;a class="anchor-link" href="https://konstantinstadler.site/posts/google_ngram_in_python/#Automatic-generation-of-google-ngram-graphs-in-Python"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;The &lt;a href="https://en.wikipedia.org/wiki/Google_Ngram_Viewer"&gt;Google Ngram Viewer&lt;/a&gt; allows you to plot the usage trajectories of words over time.&lt;/p&gt;
+&lt;p&gt;It has a &lt;a href="https://books.google.com/ngrams"&gt;convient web-interface&lt;/a&gt;, but for frequent usage you might want to generate word usage plots in python.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/google_ngram_in_python/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>google</category><category>ngram</category><category>pandas</category><category>python</category><guid>https://konstantinstadler.site/posts/google_ngram_in_python/</guid><pubDate>Tue, 04 Feb 2020 10:27:24 GMT</pubDate></item><item><title>Live streaming tweet for hashtags</title><link>https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Streaming-of-tweets-for-hashtags-and-keywords"&gt;Streaming of tweets for hashtags and keywords&lt;a class="anchor-link" href="https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/#Streaming-of-tweets-for-hashtags-and-keywords"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;This notebook explains how to search the live twitter stream for certain hashtags and keywords.
+The gathered tweets are stored as text files and further processed into a panda DataFrame.&lt;/p&gt;
+&lt;p&gt;The script is designed for long term streaming with gathered tweets stored in succeeding files.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/"&gt;Read more…&lt;/a&gt; (8 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>pandas</category><category>python</category><category>streaming</category><category>twitter</category><guid>https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/</guid><pubDate>Fri, 22 Nov 2019 12:59:02 GMT</pubDate></item></channel></rss>
