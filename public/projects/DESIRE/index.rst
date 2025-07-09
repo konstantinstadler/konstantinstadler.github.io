@@ -13,7 +13,7 @@
    .. raw:: html
 
     <script type='text/javascript' 
-    src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></scri pt>
+    src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
 
 
 DESIRE was a FP7 project that aimed to develop and apply an optimal set of indicators to monitor European progress towards resource-efficiency. 
@@ -23,13 +23,13 @@ Within this project, we compiled version 3 of EXIOBASE_.
 .. _`EXIOBASE`: https://www.exiobase.eu
 
 Presentations
--------------
+--------------
 
 .. include:: ./pres_list/iioa2016.rst
 .. include:: ./pres_list/iioa2016.rst
 
 Publications
-------------
+-------------
 
 .. include:: ./pub_list/marques2019_nee.rst
 .. include:: ./pub_list/stadler2018_exiobase3.rst

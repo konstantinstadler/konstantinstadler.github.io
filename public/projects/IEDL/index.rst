@@ -15,7 +15,7 @@
    .. raw:: html
 
     <script type='text/javascript' 
-    src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></scri pt>
+    src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
 
 
 (a) consolidate available IT infrastructure within the Industrial Ecology programme and ease the integration of newly developed tools by providing code and data exchange standards across the group
