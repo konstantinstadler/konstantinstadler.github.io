@@ -7,5 +7,5 @@ cache/
 wheels/
 *.egg-info
 .doit*
-# Virtual environments
-.venv
+output
+public

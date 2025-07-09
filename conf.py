@@ -286,11 +286,7 @@ REDIRECTIONS = []
 # in a `nikola deploy` command as you like.
 DEPLOY_COMMANDS = {
     'default': [
-        'echo "STARTING DEPLOY"',
-        'echo "Deleting cache and public"',
-        "rm -rf public; rm -rf cache",
-        'echo "Rebuilding"',
-        './deploy.sh',
+        'echo "DEPLOY IS ON GITHUB NOW"',
     ]
 }
 
