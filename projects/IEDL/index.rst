@@ -3,6 +3,7 @@
 .. date: 1970-01-01T00:00:00+00:00
 .. duration: ongoing
 .. description: The Industrial Ecology Digital Laboratory
+.. logo: /images/logo/iedl_logo.png
 .. devstatus: production
 .. previewimage: /images/proj_banner/IEDL_banner.png
 .. link: https://iedl.no

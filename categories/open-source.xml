@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Konstantin Stadler (Posts about open-source)</title><link>https://konstantinstadler.site/</link><description></description><atom:link href="https://konstantinstadler.site/categories/open-source.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2025 Konstantin Stadler 
+&lt;a rel="license" href="https://creativecommons.org/licenses/by/4.0/"&gt;
+&lt;img alt="Creative Commons License BY-NC-SA"
+style="border-width:0; margin-bottom:12px;"
+src="https://i.creativecommons.org/l/by/4.0/88x31.png"&gt;&lt;/a&gt;</copyright><lastBuildDate>Thu, 10 Jul 2025 12:37:13 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>My code in ice</title><link>https://konstantinstadler.site/posts/my-code-in-ice/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;p&gt;My Code Is Now Preserved in the Arctic for 1,000 Years&lt;/p&gt;
+&lt;p&gt;I recently discovered something pretty remarkable: two of the open-source projects I started,
+&lt;a class="reference external" href="https://github.com/IndEcol/country_converter"&gt;country_converter&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/IndEcol/pymrio"&gt;pymrio&lt;/a&gt;, have been archived in the GitHub Arctic Code Vault.
+This means that snapshots of my code are now stored on archival film, sealed in a vault 250 meters
+deep within a mountain in Svalbard, Norway, designed to last for at least 1,000 years.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/my-code-in-ice/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>country_converter</category><category>github</category><category>open-source</category><category>pymrio</category><guid>https://konstantinstadler.site/posts/my-code-in-ice/</guid><pubDate>Thu, 10 Jul 2025 12:30:46 GMT</pubDate></item></channel></rss>
