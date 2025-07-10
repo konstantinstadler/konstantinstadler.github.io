@@ -25,3 +25,9 @@ Case studies connected to SDGs will be conducted during the project. These run i
 
 HiTEA embraces Open Source development. Besides maximizing outreach and exploitation, this will provide feedback on the usability and required capabilities already during the development phase. In addition, it actively encourages code contributions and usage from outside the project team to deliver a tool fully owned by the sustainability science community.
 
+Publications
+-------------
+
+.. include:: ./pub_list/stadler2021_pymrio.rst
+
+

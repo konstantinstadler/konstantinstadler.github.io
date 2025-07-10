@@ -3,7 +3,7 @@
 .. date: 1970-01-01T00:00:00+00:00
 .. duration: ongoing
 .. description: The Environmental Footprints Explorer Webpage
-.. previewimage: /images/environmentalfootprints_screenshot.png
+.. previewimage: /images/proj_banner/environmentalfootprints_screenshot.png
 .. devstatus: stable
 .. link: https://environmentalfootprints.org/
 .. role: Co-Maintainer

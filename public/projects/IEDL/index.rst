@@ -4,7 +4,7 @@
 .. duration: ongoing
 .. description: The Industrial Ecology Digital Laboratory
 .. devstatus: production
-.. previewimage: /images/IEDL_banner.png
+.. previewimage: /images/proj_banner/IEDL_banner.png
 .. link: https://iedl.no
 .. role: Manager
 .. lead: True

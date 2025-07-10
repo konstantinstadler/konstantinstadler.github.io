@@ -1,7 +1,7 @@
 .. title: Country Converter coco
 .. slug: coco
 .. date: 1970-01-01T00:00:00+00:00
-.. duration: ongoing
+.. duration: Production/Stable
 .. description: Multi-Regional Input-Output Analysis in Python. 
 .. devstatus: beta
 .. github: https://github.com/konstantinstadler/country_converter
@@ -40,40 +40,6 @@ The country converter (coco) is a Python package to convert and match country na
 The country converter (coco) automates the conversion from different standards and version of country names.
 Internally, coco is based on a table specifying the different ISO and UN standards per country together with the official name and a regular expression which aim to match all English versions of a specific country name.
 In addition, coco includes classification based on UN-, EU-, OECD-membership, UN regions specifications, continents and various MRIO and IAM databases
-
-Classification schemes
-----------------------
-
-Currently the following classification schemes are available (see also Data sources below for further information):
-
-#) ISO2 (ISO 3166-1 alpha-2)
-#) ISO3 (ISO 3166-1 alpha-3)
-#) ISO - numeric (ISO 3166-1 numeric)
-#) UN numeric code (M.49 - follows to a large extend ISO-numeric)
-#) A standard or short name
-#) The "official" name
-#) Continent
-#) UN region
-#) EXIOBASE_ 1 classification
-#) EXIOBASE_ 2 classification
-#) EXIOBASE_ 3 classification
-#) WIOD_ classification
-#) Eora_
-#) OECD_ membership (per year)
-#) MESSAGE_ 11-region classification
-#) IMAGE_
-#) REMIND_
-#) UN_ membership (per year)
-#) EU_ membership (including EU12, EU15, EU25, EU27, EU27_2007, EU28)
-#) EEA_ membership
-#) Schengen_ region
-#) Cecilia_ 2050 classification
-#) APEC_
-#) BRIC_
-#) BASIC_
-#) CIS_ (as by 2019, excl. Turkmenistan)
-#) G7_
-#) G20_ (listing all EU member states as individual members)
 
 
 .. _unstats: http://unstats.un.org/unsd/methods/m49/m49regin.htm
