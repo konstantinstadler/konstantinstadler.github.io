@@ -14,8 +14,8 @@ dependencies = [
 [tool.poe.tasks]
 new_post = "nikola new_post"
 edit_post = "nikola new_post -e"
-build = "nikola build"
-serve = "nikola serve -b"
+build = "nikola build --always-execute"
+serve = "sh -c 'nikola build --always-execute && nikola serve -b'"
 dev = "nikola auto -b"
 deploy = "nikola github_deploy"
 

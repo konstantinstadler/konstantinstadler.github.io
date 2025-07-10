@@ -3,11 +3,16 @@
 .. date: 1970-01-01T00:00:00+00:00
 .. duration: ongoing
 .. funding: Research Council of Norway - IKTPLUSS
+.. previewimage: /images/proj_banner/hitea_banner.png
+.. logo: /images/logo/hitea_logo.png
+.. link: https://hitea.iedl.no/index.html
 .. description: High Throughput Environmental Assessment Pipeline
 .. devstatus: ongoing
 .. lead: True
 .. role: Maintainer
 .. sort: 1
+.. status: featured
+
 
 
    .. raw:: html

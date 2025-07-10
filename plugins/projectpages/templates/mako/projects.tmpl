@@ -7,7 +7,7 @@
     </header>
 
 % if featured:
-<div id="project-carousel" style="max-height: 200px" class="carousel slide" data-ride="carousel">
+<div id="project-carousel" style="max-height: 800px" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     % for p in featured:
@@ -20,6 +20,13 @@
   </ol>
 
   <!-- Wrapper for slides -->
+  <style>
+      .carousel-inner img {
+        height: 400px;
+        object-fit: cover;
+        width: 100%;
+      }
+  </style>
   <div class="carousel-inner">
     % for p in featured:
     <div class="carousel-item
@@ -49,7 +56,7 @@ active
 % endif
 
 
-<h2 style="margin-top:65px;">Maintaining</h2>
+<h2 style="margin-top:45px;">Maintaining</h2>
 
 
     <ul class="project-list">

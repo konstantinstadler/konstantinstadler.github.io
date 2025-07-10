@@ -1,7 +1,7 @@
 .. title: Pymrio
 .. slug: pymrio
 .. date: 1970-01-01T00:00:00+00:00
-.. logo: /images/pymrio_logo_small.png
+.. logo: /images/logo/pymrio_logo_small.png
 .. duration: ongoing
 .. description: Multi-Regional Input-Output Analysis in Python. 
 .. devstatus: production

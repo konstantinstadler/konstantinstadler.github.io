@@ -9,6 +9,9 @@
 
 In images/proj_banner is a script resize which converts all images to same height 
 for the project carousel. It uses ImageMagick and requires the images to be in the same folder.
+However, this should not be necessary anymore, as the carousel is now using CSS to handle the images.
+
+These are defined in: plugins/projectpages/templates/mako/projects.tmpl
 
 ## Doc links
 
