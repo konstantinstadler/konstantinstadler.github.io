@@ -18,6 +18,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../rss.xml">
 <link rel="canonical" href="https://konstantinstadler.site/blog/">
+<link rel="next" href="index-1.html" type="text/html">
 <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
 </head>
 <body>
@@ -115,7 +116,42 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="../posts/my-code-in-ice/" class="u-url">My code in ice</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="../posts/why-are-there-so-many-country-codes/" class="u-url">Why Are There So Many Country Codes?</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Konstantin Stadler
+            </span></p>
+            <p class="dateline">
+            <a href="../posts/why-are-there-so-many-country-codes/" rel="bookmark">
+            <time class="published dt-published" datetime="2025-07-11T18:56:11+02:00" itemprop="datePublished" title="2025-07-11 18:56">2025-07-11 18:56</time></a>
+            </p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <section id="why-are-there-so-many-country-codes-and-how-to-convert-them-easily"><h2>Why Are There So Many Country Codes? (And How to Convert Them Easily)</h2>
+<p>Yesterday, I was (somewhat reluctantly) forced to watch a few minutes of the Switzerland vs Finland match (congratulations to Switzerland, by the way!). As I glanced at the screen, I noticed something odd: Switzerland was abbreviated as <code class="docutils literal">SUI</code>. That immediately caught my attention, because <code class="docutils literal">SUI</code> is <em>not</em> the official ISO 3166-1 alpha-3 code for Switzerland.</p>
+<p>Curious? Check it yourself:
+<a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3">ISO 3166-1 alpha-3 codes on Wikipedia</a></p>
+<p>It turns out that FIFA, the international football association, uses its own set of country codes. And, just to make things even more interesting, these codes are also different from the ones used by the International Olympic Committee (IOC).</p>
+<ul class="simple">
+<li><p>FIFA country codes: <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_FIFA_country_codes">https://en.wikipedia.org/wiki/List_of_FIFA_country_codes</a></p></li>
+<li><p>IOC country codes: <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_IOC_country_codes">https://en.wikipedia.org/wiki/List_of_IOC_country_codes</a></p></li>
+</ul>
+<section id="why-does-this-matter"><h3>Why Does This Matter?</h3>
+<p>If you work with international data—whether in sports, research, or business—these inconsistencies can quickly become a headache. Converting between ISO, FIFA, and IOC codes (and others!) is a common but surprisingly tricky problem.</p>
+</section><section id="a-solution-the-country-converter-package"><h3>A Solution: The <code class="docutils literal">country_converter</code> Package</h3>
+<p>To make life easier, I’ve been working on the <a class="reference external" href="https://github.com/IndEcol/country_converter">country_converter (coco)</a> package. And as of today (version 1.3.1), coco now supports FIFA country codes as well!</p>
+<p>With coco, you can easily convert between:</p>
+<ul class="simple">
+<li><p>ISO 3166-1 alpha-3 codes</p></li>
+<li><p>FIFA country codes</p></li>
+<li><p>IOC country codes</p></li>
+<li><p>...and many more!</p></li>
+</ul>
+<p>Check it out on GitHub:
+<a class="reference external" href="https://github.com/IndEcol/country_converter">https://github.com/IndEcol/country_converter</a></p>
+</section></section>
+</div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="../posts/my-code-in-ice/" class="u-url">My code in ice</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Konstantin Stadler
@@ -353,35 +389,13 @@ The gathered tweets are stored as text files and further processed into a panda 
 </div>
 </div>
     </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="../posts/setting-up-a-website-with-Nikola/" class="u-url">Setting up a website with Nikola</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Konstantin Stadler
-            </span></p>
-            <p class="dateline">
-            <a href="../posts/setting-up-a-website-with-Nikola/" rel="bookmark">
-            <time class="published dt-published" datetime="2019-10-25T09:07:00+02:00" itemprop="datePublished" title="2019-10-25 09:07">2019-10-25 09:07</time></a>
-            </p>
-        </div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>Traditionally, the initial blog post on a custom made site desribes how to setup and build the site.
-However, there are already a plethora of such descriptions available.
-Therefore, I here rather share my motivation for the <a class="reference internal" href="../posts/setting-up-a-website-with-Nikola/#why">why</a>, the outcome of my research about the <a class="reference internal" href="../posts/setting-up-a-website-with-Nikola/#how">how</a>, followed by some points about <a class="reference internal" href="../posts/setting-up-a-website-with-Nikola/#practicalities">practicalities</a>.</p>
-<p class="more"><a href="../posts/setting-up-a-website-with-Nikola/">Read more…</a></p>
-</div>
-    </div>
     </article>
 </div>
 
-
-
-    
-
-
-
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        <ul class="pager postindexpager clearfix">
+<li class="next"><a href="index-1.html" rel="next">Older posts</a></li>
+        </ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
         </script><!--End of body content--><footer id="footer"><a href="../">Home</a>
             
