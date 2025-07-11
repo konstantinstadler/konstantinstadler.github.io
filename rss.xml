@@ -3,7 +3,31 @@
 &lt;a rel="license" href="https://creativecommons.org/licenses/by/4.0/"&gt;
 &lt;img alt="Creative Commons License BY-NC-SA"
 style="border-width:0; margin-bottom:12px;"
-src="https://i.creativecommons.org/l/by/4.0/88x31.png"&gt;&lt;/a&gt;</copyright><lastBuildDate>Thu, 10 Jul 2025 12:37:13 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>My code in ice</title><link>https://konstantinstadler.site/posts/my-code-in-ice/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;p&gt;My Code Is Now Preserved in the Arctic for 1,000 Years&lt;/p&gt;
+src="https://i.creativecommons.org/l/by/4.0/88x31.png"&gt;&lt;/a&gt;</copyright><lastBuildDate>Fri, 11 Jul 2025 16:58:45 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Why Are There So Many Country Codes? (And How to Convert Them Easily)</title><link>https://konstantinstadler.site/posts/why-are-there-so-many-country-codes/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;p&gt;Yesterday, I was (somewhat reluctantly) forced to watch a few minutes of the Switzerland vs Finland match (congratulations to Switzerland, by the way!). As I glanced at the screen, I noticed something odd: Switzerland was abbreviated as &lt;code class="docutils literal"&gt;SUI&lt;/code&gt;. That immediately caught my attention, because &lt;code class="docutils literal"&gt;SUI&lt;/code&gt; is &lt;em&gt;not&lt;/em&gt; the official ISO 3166-1 alpha-3 code for Switzerland.&lt;/p&gt;
+&lt;p&gt;Curious? Check it yourself:
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3"&gt;ISO 3166-1 alpha-3 codes on Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It turns out that FIFA, the international football association, uses its own set of country codes. And, just to make things even more interesting, these codes are also different from the ones used by the International Olympic Committee (IOC).&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;FIFA country codes: &lt;a class="reference external" href="https://en.wikipedia.org/wiki/List_of_FIFA_country_codes"&gt;https://en.wikipedia.org/wiki/List_of_FIFA_country_codes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;IOC country codes: &lt;a class="reference external" href="https://en.wikipedia.org/wiki/List_of_IOC_country_codes"&gt;https://en.wikipedia.org/wiki/List_of_IOC_country_codes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;section id="why-does-this-matter"&gt;
+&lt;h2&gt;Why Does This Matter?&lt;/h2&gt;
+&lt;p&gt;If you work with international data—whether in sports, research, or business—these inconsistencies can quickly become a headache. Converting between ISO, FIFA, and IOC codes (and others!) is a common but surprisingly tricky problem.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="a-solution-the-country-converter-package"&gt;
+&lt;h2&gt;A Solution: The &lt;code class="docutils literal"&gt;country_converter&lt;/code&gt; Package&lt;/h2&gt;
+&lt;p&gt;To make life easier, I’ve been working on the &lt;a class="reference external" href="https://github.com/IndEcol/country_converter"&gt;country_converter (coco)&lt;/a&gt; package. And as of today (version 1.3.1), coco now supports FIFA country codes as well!&lt;/p&gt;
+&lt;p&gt;With coco, you can easily convert between:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;ISO 3166-1 alpha-3 codes&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FIFA country codes&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;IOC country codes&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;...and many more!&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Check it out on GitHub:
+&lt;a class="reference external" href="https://github.com/IndEcol/country_converter"&gt;https://github.com/IndEcol/country_converter&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;</description><guid>https://konstantinstadler.site/posts/why-are-there-so-many-country-codes/</guid><pubDate>Fri, 11 Jul 2025 16:56:11 GMT</pubDate></item><item><title>My code in ice</title><link>https://konstantinstadler.site/posts/my-code-in-ice/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;p&gt;My Code Is Now Preserved in the Arctic for 1,000 Years&lt;/p&gt;
 &lt;p&gt;I recently discovered something pretty remarkable: two of the open-source projects I started,
 &lt;a class="reference external" href="https://github.com/IndEcol/country_converter"&gt;country_converter&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/IndEcol/pymrio"&gt;pymrio&lt;/a&gt;, have been archived in the GitHub Arctic Code Vault.
 This means that snapshots of my code are now stored on archival film, sealed in a vault 250 meters
@@ -70,7 +94,4 @@ For example, companies use it to identify negative feedbacks on social media and
 &lt;p&gt;This notebook explains how to search the live twitter stream for certain hashtags and keywords.
 The gathered tweets are stored as text files and further processed into a panda DataFrame.&lt;/p&gt;
 &lt;p&gt;The script is designed for long term streaming with gathered tweets stored in succeeding files.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/"&gt;Read more…&lt;/a&gt; (8 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>pandas</category><category>python</category><category>streaming</category><category>twitter</category><guid>https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/</guid><pubDate>Fri, 22 Nov 2019 12:59:02 GMT</pubDate></item><item><title>Setting up a website with Nikola</title><link>https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/</link><dc:creator>Konstantin Stadler</dc:creator><description>&lt;div&gt;&lt;p&gt;Traditionally, the initial blog post on a custom made site desribes how to setup and build the site.
-However, there are already a plethora of such descriptions available.
-Therefore, I here rather share my motivation for the &lt;a class="reference internal" href="https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/#why"&gt;why&lt;/a&gt;, the outcome of my research about the &lt;a class="reference internal" href="https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/#how"&gt;how&lt;/a&gt;, followed by some points about &lt;a class="reference internal" href="https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/#practicalities"&gt;practicalities&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>https://konstantinstadler.site/posts/setting-up-a-website-with-Nikola/</guid><pubDate>Fri, 25 Oct 2019 07:07:00 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/"&gt;Read more…&lt;/a&gt; (8 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>pandas</category><category>python</category><category>streaming</category><category>twitter</category><guid>https://konstantinstadler.site/posts/live-streaming-tweet-for-hashtags/</guid><pubDate>Fri, 22 Nov 2019 12:59:02 GMT</pubDate></item></channel></rss>
